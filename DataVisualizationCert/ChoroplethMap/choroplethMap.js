@@ -1,67 +1,91 @@
-// Constants for SVG dimensions
-const width = 960;
-const height = 600;
-
-// Append SVG element
-const svg = d3.select('#choropleth-map')
-  .attr('width', width)
-  .attr('height', height);
-
-// Load US Education Data and US County Data
-Promise.all([
-  d3.json('https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json'),
-  d3.json('https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json')
-]).then(([countyData, educationData]) => {
-
-  // Map education data to fips codes
-  const educationMap = {};
-  educationData.forEach(d => {
-    educationMap[d.fips] = d;
+document.addEventListener("DOMContentLoaded", function () {
+  Promise.all([
+    fetch(
+      "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json"
+    ).then((response) => response.json()),
+    fetch(
+      "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json"
+    ).then((response) => response.json()),
+  ]).then(([countyData, educationData]) => {
+    createChoroplethMap(countyData, educationData);
   });
 
-  // Draw counties
-  svg.selectAll('path')
-    .data(topojson.feature(countyData, countyData.objects.counties).features)
-    .enter().append('path')
-    .attr('class', 'county')
-    .attr('d', d3.geoPath())
-    .attr('fill', d => {
-      const education = educationMap[d.id];
-      return getColor(education.bachelorsOrHigher);
-    })
-    .attr('data-fips', d => d.id)
-    .attr('data-education', d => {
-      const education = educationMap[d.id];
-      return education ? education.bachelorsOrHigher : 0;
-    })
-    .on('mouseover', handleMouseOver)
-    .on('mousemove', handleMouseMove)
-    .on('mouseout', handleMouseOut);
+  function createChoroplethMap(countyData, educationData) {
+    const w = 960;
+    const h = 600;
+
+    const svg = d3
+      .select("#map")
+      .append("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+    const colorScale = d3
+      .scaleThreshold()
+      .domain(d3.range(2.6, 75.1, (75.1 - 2.6) / 8))
+      .range(d3.schemeBlues[9]);
+
+    const tooltip = d3
+      .select("#map")
+      .append("div")
+      .attr("id", "tooltip")
+      .style("opacity", 0);
+
+    svg
+      .selectAll("path")
+      .data(topojson.feature(countyData, countyData.objects.counties).features)
+      .enter()
+      .append("path")
+      .attr("class", "county")
+      .attr("data-fips", (d) => d.id)
+      .attr("data-education", (d) => {
+        const county = educationData.find((item) => item.fips === d.id);
+        return county ? county.bachelorsOrHigher : 0;
+      })
+      .attr("fill", (d) => {
+        const county = educationData.find((item) => item.fips === d.id);
+        return county ? colorScale(county.bachelorsOrHigher) : colorScale(0);
+      })
+      .attr("d", d3.geoPath())
+      .on("mouseover", (event, d) => {
+        tooltip.transition().duration(200).style("opacity", 0.9);
+        tooltip
+          .html(() => {
+            const county = educationData.find((item) => item.fips === d.id);
+            return county
+              ? `${county.area_name}, ${county.state}: ${county.bachelorsOrHigher}%`
+              : "Data not available";
+          })
+          .attr("data-education", () => {
+            const county = educationData.find((item) => item.fips === d.id);
+            return county ? county.bachelorsOrHigher : 0;
+          })
+          .style("left", event.pageX + "px")
+          .style("top", event.pageY - 28 + "px");
+      })
+      .on("mouseout", () => {
+        tooltip.transition().duration(300).style("opacity", 0);
+      });
+
+    const legendColors = colorScale.range().map((color) => {
+      const d = colorScale.invertExtent(color);
+      if (d[0] === null) d[0] = 0;
+      if (d[1] === null) d[1] = 100;
+      return {
+        color,
+        value: d[0],
+      };
+    });
+
+    const legend = d3.select("#legend");
+
+    legend
+      .selectAll("div")
+      .data(legendColors)
+      .enter()
+      .append("div")
+      .attr("class", "legend-item")
+      .html((d) => `${Math.round(d.value)}%`)
+      .style("background-color", (d) => d.color);
+  }
 });
-
-// Function to get color based on percentage
-function getColor(percentage) {
-  if (percentage >= 80) return '#006d2c';
-  if (percentage >= 60) return '#31a354';
-  if (percentage >= 40) return '#74c476';
-  if (percentage >= 20) return '#bae4b3';
-  return '#edf8e9';
-}
-
-// Tooltip handling functions
-function handleMouseOver(event, d) {
-  const tooltip = d3.select('#tooltip');
-  tooltip.style('opacity', 0.9);
-  tooltip.attr('data-education', d3.select(this).attr('data-education'));
-}
-
-function handleMouseMove(event) {
-  const tooltip = d3.select('#tooltip');
-  tooltip.style('left', (event.pageX + 10) + 'px')
-         .style('top', (event.pageY - 28) + 'px');
-}
-
-function handleMouseOut() {
-  const tooltip = d3.select('#tooltip');
-  tooltip.style('opacity', 0);
-}
