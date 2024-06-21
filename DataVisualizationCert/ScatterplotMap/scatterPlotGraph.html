@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scatter Plot</title>
+  <title>Scatterplot Graph</title>
   <link rel="stylesheet" href="/DataVisualizationCert/ScatterplotMap/scatterPlotGraph.css">
 </head>
 <body>
-  <div id="title">Doping in Professional Bicycle Racing</div>
-  <div id="scatter-plot"></div>
-  <div id="legend">
-    <strong>Legend:</strong> 
-    <span style="color: #ff7f0e;">Doping Allegations</span> 
-    <span style="color: #1f77b4;">No Doping Allegations</span>
+  <div class="container">
+    <h1 id="title">Doping in Professional Bicycle Racing</h1>
+    <svg id="chart"></svg>
   </div>
-  <script src="https://d3js.org/d3.v6.min.js"></script>
+
+  <div id="tooltip"></div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="/DataVisualizationCert/ScatterplotMap/scatterPlotGraph.js"></script>
 </body>
 </html>
+
