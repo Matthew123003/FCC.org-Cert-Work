@@ -40,7 +40,7 @@ header {
     /* background: linear-gradient(to bottom right, #4CAF50, #2E7D32);Change this line to a cool background */
     color: white;
     text-align: center;
-    background: url(https://png.pngtree.com/background/20230525/original/pngtree-d-curved-pattern-wallpaper-black-and-brown-wallpaper-for-desktop-and-picture-image_2731970.jpg);
+    background: url(https://s.tmimgcdn.com/scr/800x500/205200/modern-geometric-wallpaper-black-and-gold-background_205200-original.jpg);
     background-size: 100%;
 }
 
@@ -103,5 +103,6 @@ h2 {
 }
 
 h1 {
-    color: blue;
+    color: gainsboro;
+    font-size: 80px;
 }
