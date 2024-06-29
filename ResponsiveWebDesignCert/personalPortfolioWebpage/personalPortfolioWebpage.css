@@ -37,9 +37,11 @@ header {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to bottom right, #4CAF50, #2E7D32);/* Change this line to a cool background */
+    /* background: linear-gradient(to bottom right, #4CAF50, #2E7D32);Change this line to a cool background */
     color: white;
     text-align: center;
+    background: url(https://png.pngtree.com/background/20230525/original/pngtree-d-curved-pattern-wallpaper-black-and-brown-wallpaper-for-desktop-and-picture-image_2731970.jpg);
+    background-size: 100%;
 }
 
 #projects {
