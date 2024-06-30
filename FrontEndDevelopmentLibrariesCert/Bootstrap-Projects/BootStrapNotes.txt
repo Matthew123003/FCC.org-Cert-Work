@@ -1,4 +1,5 @@
-To use Bootstrap in your HTML project, you can include it via a CDN (Content Delivery Network) or install it locally. Here are the steps for both methods:
+To use Bootstrap in your HTML project, you can include it via a CDN (Content Delivery Network) 
+or install it locally. Here are the steps for both methods:
 Using a CDN
 
     Add Bootstrap CSS:
@@ -27,7 +28,8 @@ Installing Locally
 npm install bootstrap
 
 Include Bootstrap in Your Project:
-In your HTML file, link to the local Bootstrap CSS and JS files. If you're using a build tool like Webpack or a framework like React, you might need to adjust the paths accordingly.
+In your HTML file, link to the local Bootstrap CSS and JS files. If you're using a build tool like Webpack 
+or a framework like React, you might need to adjust the paths accordingly.
 
 html
 
@@ -58,7 +60,8 @@ html
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -82,7 +85,8 @@ html
     <div class="container mt-5">
         <div class="jumbotron">
             <h1 class="display-4">Hello, world!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra 
+            attention to featured content or information.</p>
             <hr class="my-4">
             <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
             <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
@@ -95,6 +99,7 @@ html
 </body>
 </html>
 
-This example includes a Bootstrap navbar and a jumbotron. You can start using Bootstrap classes in your HTML to style your elements as per Bootstrap's documentation.
+This example includes a Bootstrap navbar and a jumbotron. You can start using Bootstrap classes in your HTML to 
+style your elements as per Bootstrap's documentation.
 
 Feel free to ask if you have any other questions!
