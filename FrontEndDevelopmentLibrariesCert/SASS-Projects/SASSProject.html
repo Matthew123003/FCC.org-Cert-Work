@@ -5,14 +5,79 @@
     </head>
     <style type='text/scss'>
 
+        $text-color: red;
 
         .header{
-          text-align: center;
-        }
+         text-align: center;
+         }
         .blog-post, h2 {
-          color: red;
-        }
-      </style>
+        color: $text-color;
+         }
+
+         .blog-post {
+                h1 {
+                text-align: center;
+                color: blue;
+                 }
+                 p {
+                 font-size: 20px;
+                 }
+             }
+
+             @mixin border-radius($radius) {
+                -webkit-border-radius: $radius;
+                -moz-border-radius: $radius;
+                -ms-border-radius: $radius;
+                border-radius: $radius;
+                }
+
+                #awesome {
+                @include border-radius(15px);
+                width: 150px;
+                height: 150px;
+                background-color: green;
+                }
+
+                @mixin border-stroke($val) {
+                    @if $val == light {
+                        border: 1px solid black;
+                    }
+                    @else if $val == medium {
+                        border: 3px solid black;
+                    }
+                    @else if $val == heavy {
+                        border: 6px solid black;
+                    }
+                    @else {
+                        border: none;
+                    }
+                    }
+
+                    #box {
+                    width: 150px;
+                    height: 150px;
+                    background-color: red;
+                    @include border-stroke(medium);
+                    }
+
+                    @for $j from 1 to 6 {
+                    .text-1{
+                        font-size: 15px;
+                    }
+                    .text-2{
+                        font-size: 30px;
+                    }
+                    .text-3{
+                        font-size: 45px;
+                    }
+                    .text-4{
+                        font-size: 60px;
+                    }
+                    .text-5{
+                        font-size: 75px;
+                    }
+                }
+    </style>
       
       <h1 class="header">Learn Sass</h1>
       <div class="blog-post">
@@ -28,5 +93,5 @@
         <p>Even more random text within a paragraph</p>
       </div>
 
-      
+
 </html>
