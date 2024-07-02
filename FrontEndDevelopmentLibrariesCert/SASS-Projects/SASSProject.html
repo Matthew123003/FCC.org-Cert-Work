@@ -5,16 +5,16 @@
     </head>
     <style type='text/scss'>
 
-        $text-color: red;
+                    $text-color: red;
 
-        .header{
-         text-align: center;
-         }
-        .blog-post, h2 {
-        color: $text-color;
-         }
+                    .header{
+                    text-align: center;
+                    }
+                    .blog-post, h2 {
+                    color: $text-color;
+                    }
 
-         .blog-post {
+                .blog-post {
                 h1 {
                 text-align: center;
                 color: blue;
@@ -23,6 +23,7 @@
                  font-size: 20px;
                  }
              }
+                <!-- MIXIN for SASS -->
 
              @mixin border-radius($radius) {
                 -webkit-border-radius: $radius;
@@ -37,6 +38,8 @@
                 height: 150px;
                 background-color: green;
                 }
+
+                <!-- MIXIN IF/ELSE for SASS-->
 
                 @mixin border-stroke($val) {
                     @if $val == light {
@@ -60,6 +63,8 @@
                     @include border-stroke(medium);
                     }
 
+                    <!-- For Loop for SASS -->
+
                     @for $j from 1 to 6 {
                     .text-1{
                         font-size: 15px;
@@ -77,6 +82,36 @@
                         font-size: 75px;
                     }
                 }
+            
+                <!-- For each loop for SASS -->
+
+                $colors: blue, black, red;
+
+                        @each $color in $colors {
+                        .#{$color}-bg {
+                            background-color: $color;
+                        }
+                        }
+
+
+                div {
+                    height: 200px;
+                    width: 200px;
+                }
+
+                <!-- While loop for SASS -->
+
+                $i: 1;
+
+                @while $i <= 5 {
+                .text-#{$i} {
+                    font-size: 15px * $i;
+                }
+                $i: $i + 1;
+                }
+
+
+
     </style>
       
       <h1 class="header">Learn Sass</h1>
@@ -93,5 +128,32 @@
         <p>Even more random text within a paragraph</p>
       </div>
 
+            <style type='text/scss'>
+        h3 {
+            text-align: center;
+        }
+        
+        .info {
+            width: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+
+        .info-important {
+            @extend .info;
+            background-color: magenta;
+        }
+        </style>
+        <h3>Posts</h3>
+        <div class="info-important">
+        <p>This is an important post. It should extend the class ".info" and have its own CSS styles.</p>
+        </div>
+
+        <div class="info">
+        <p>This is a simple post. It has basic styling and can be extended for other uses.</p>
+
+        @import 'variables';
+        <!-- References another SCSS file -->
+</div>
 
 </html>
