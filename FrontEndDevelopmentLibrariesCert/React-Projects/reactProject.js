@@ -43,3 +43,13 @@ const JSX1 = (
     </div>
   );
 
+  const MyComponent = function() {
+    // Change code below this line
+    return(
+      <div>"String of text"</div>
+    )
+    // Change code above this line
+  }
+
+  
+
