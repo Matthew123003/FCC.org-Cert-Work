@@ -27,7 +27,9 @@ const JSX1 = (
   );
   // Add your code below this line
   
+  {/*DO NOT FORGET THIS IS HOW TO RENDER TO THE REACT DOM */}
   ReactDOM.render(JSX2, document.getElementById("challenge-node"));
+  {/*DO NOT FORGET THIS IS HOW TO RENDER TO THE REACT DOM */}
 
   const JSX3 = (
     <div className="myDiv">
@@ -169,5 +171,26 @@ const JSX1 = (
     }
   };
 
+  class TypesOfFood extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      return (
+        <div>
+          <h1>Types of Food:</h1>
+          {/* Change code below this line */}
+            <Fruits />
+            <Vegetables />
+          {/* Change code above this line */}
+        </div>
+      );
+    }
+  };
+  
+  // Change code below this line
+  ReactDOM.render(<TypesOfFood />, document.getElementById('challenge-node'));
 
+
+  
 
