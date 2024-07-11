@@ -35,5 +35,11 @@ const JSX1 = (
     </div>
   );
 
-  
+  const JSX4 = (
+    <div>
+      <h2>Welcome to React!</h2> <br /> {/* Notice the self closing brackets on the br and the hr element tags */}
+      <p>Be sure to close all tags!</p>
+      <hr />
+    </div>
+  );
 
