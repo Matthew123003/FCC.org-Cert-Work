@@ -108,7 +108,7 @@ const JSX1 = (
     );
   };
   
-  const Fruits = () => {
+  const Fruits1 = () => {
     return (
       <div>
         { /* Change code below this line */ }
@@ -135,5 +135,39 @@ const JSX1 = (
     }
   };
 
+  class Fruits extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      return (
+        <div>
+          <h2>Fruits:</h2>
+          { /* Change code below this line */ }
+            <Citrus />
+            <NonCitrus />
+          { /* Change code above this line */ }
+        </div>
+      );
+    }
+  };
   
+  class TypesOfFood extends React.Component {
+    constructor(props) {
+       super(props);
+    }
+    render() {
+      return (
+        <div>
+          <h1>Types of Food:</h1>
+          { /* Change code below this line */ }
+            <Fruits />
+          { /* Change code above this line */ }
+          <Vegetables />
+        </div>
+      );
+    }
+  };
+
+
 
