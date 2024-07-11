@@ -192,5 +192,20 @@ const JSX1 = (
   ReactDOM.render(<TypesOfFood />, document.getElementById('challenge-node'));
 
 
+  class MyComponent1 extends React.Component{
+    constructor(props){
+      super(props)
+    }
+    render() {
+      return(
+      <div>
+      <h1>My First React Component!</h1>
+      </div>
+      );
+    }
+  }
   
+  ReactDOM.render(<MyComponent1 />, document.getElementById('challenge-node'));
+
+
 
