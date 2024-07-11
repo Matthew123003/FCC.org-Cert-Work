@@ -18,5 +18,16 @@ const JSX1 = (
     </div>
   );
 
+
+  const JSX2 = (
+    <div id="challenge-node">
+      <h1>Hello World</h1>
+      <p>Lets render this to the DOM</p>
+    </div>
+  );
+  // Add your code below this line
   
+  ReactDOM.render(JSX2, document.getElementById("challenge-node"));
+
+
 
