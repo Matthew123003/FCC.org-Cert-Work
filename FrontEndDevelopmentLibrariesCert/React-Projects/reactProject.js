@@ -29,5 +29,11 @@ const JSX1 = (
   
   ReactDOM.render(JSX2, document.getElementById("challenge-node"));
 
+  const JSX3 = (
+    <div className="myDiv">
+      <h1>Add a class to this div</h1>
+    </div>
+  );
 
+  
 
