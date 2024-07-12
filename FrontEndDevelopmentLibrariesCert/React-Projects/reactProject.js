@@ -191,7 +191,7 @@ const JSX1 = (
   // Change code below this line
   ReactDOM.render(<TypesOfFood />, document.getElementById('challenge-node'));
 
-
+  {/* PROPS stands for PROPERTIES */}
   class MyComponent1 extends React.Component{
     constructor(props){
       super(props)
