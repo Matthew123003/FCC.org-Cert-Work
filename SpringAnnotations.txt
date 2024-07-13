@@ -1,0 +1,262 @@
+Sure, here’s a comprehensive list of common annotations in the Spring Framework and their functionalities:
+
+### Core Spring Annotations
+
+1. **@Configuration**
+   - **Purpose**: Indicates that a class declares one or more `@Bean` methods and may be processed 
+   by the Spring container to generate bean definitions and service requests for those beans at runtime.
+   - **Example**:
+     ```java
+     @Configuration
+     public class AppConfig {
+         @Bean
+         public MyService myService() {
+             return new MyServiceImpl();
+         }
+     }
+     ```
+
+2. **@Bean**
+   - **Purpose**: Indicates that a method produces a bean to be managed by the Spring container.
+   - **Example**:
+     ```java
+     @Bean
+     public MyService myService() {
+         return new MyServiceImpl();
+     }
+     ```
+
+3. **@Component**
+   - **Purpose**: Indicates that an annotated class is a "component". Such classes are considered
+    as candidates for auto-detection when using annotation-based configuration and classpath scanning.
+   - **Example**:
+     ```java
+     @Component
+     public class MyComponent {
+         // class definition
+     }
+     ```
+
+4. **@Service**
+   - **Purpose**: Indicates that an annotated class is a "Service" (a business service facade).
+   This annotation is a specialization of `@Component`, allowing for implementation classes to be
+    autodetected through classpath scanning.
+   - **Example**:
+     ```java
+     @Service
+     public class MyService {
+         // class definition
+     }
+     ```
+
+5. **@Repository**
+   - **Purpose**: Indicates that an annotated class is a "Repository" (a Data Access Object or DAO).
+    This annotation is a specialization of `@Component` with an automatic exception translation mechanism.
+   - **Example**:
+     ```java
+     @Repository
+     public class MyRepository {
+         // class definition
+     }
+     ```
+
+6. **@Controller**
+   - **Purpose**: Indicates that an annotated class is a "Controller" (presentation layer). 
+   This annotation is a specialization of `@Component` and is used to define a controller class in Spring MVC.
+   - **Example**:
+     ```java
+     @Controller
+     public class MyController {
+         // class definition
+     }
+     ```
+
+7. **@RestController**
+   - **Purpose**: A convenience annotation that combines `@Controller` and `@ResponseBody`. 
+   It eliminates the need to annotate every request handling method of the controller class
+    with the `@ResponseBody` annotation.
+   - **Example**:
+     ```java
+     @RestController
+     public class MyRestController {
+         // class definition
+     }
+     ```
+
+### Dependency Injection Annotations
+
+1. **@Autowired**
+   - **Purpose**: Marks a constructor, field, setter method, or configuration method to be 
+   autowired by Spring's dependency injection facilities.
+   - **Example**:
+     ```java
+     @Autowired
+     private MyService myService;
+     ```
+
+2. **@Qualifier**
+   - **Purpose**: Indicates a specific bean to be injected when multiple beans of the same type exist.
+   - **Example**:
+     ```java
+     @Autowired
+     @Qualifier("specificBean")
+     private MyService myService;
+     ```
+
+3. **@Value**
+   - **Purpose**: Indicates a default value expression for the annotated element. Typically used to inject property values.
+   - **Example**:
+     ```java
+     @Value("${my.property}")
+     private String myProperty;
+     ```
+
+### Stereotype Annotations
+
+1. **@Primary**
+   - **Purpose**: Indicates that a bean should be given preference when multiple beans qualify to be autowired.
+   - **Example**:
+     ```java
+     @Primary
+     @Bean
+     public MyService primaryService() {
+         return new PrimaryServiceImpl();
+     }
+     ```
+
+### Spring MVC Annotations
+
+1. **@RequestMapping**
+   - **Purpose**: Maps HTTP requests to handler methods of MVC and REST controllers.
+   - **Example**:
+     ```java
+     @RequestMapping("/home")
+     public String home() {
+         return "home";
+     }
+     ```
+
+2. **@GetMapping**
+   - **Purpose**: A composed annotation that acts as a shortcut for `@RequestMapping(method = RequestMethod.GET)`.
+   - **Example**:
+     ```java
+     @GetMapping("/home")
+     public String home() {
+         return "home";
+     }
+     ```
+
+3. **@PostMapping**
+   - **Purpose**: A composed annotation that acts as a shortcut for `@RequestMapping(method = RequestMethod.POST)`.
+   - **Example**:
+     ```java
+     @PostMapping("/submit")
+     public String submit() {
+         return "submit";
+     }
+     ```
+
+4. **@RequestParam**
+   - **Purpose**: Binds a web request parameter to a method parameter.
+   - **Example**:
+     ```java
+     @RequestMapping("/greet")
+     public String greet(@RequestParam("name") String name) {
+         return "Hello, " + name;
+     }
+     ```
+
+5. **@PathVariable**
+   - **Purpose**: Binds a URI template variable to a method parameter.
+   - **Example**:
+     ```java
+     @RequestMapping("/user/{id}")
+     public String getUser(@PathVariable("id") String id) {
+         return "User ID: " + id;
+     }
+     ```
+
+6. **@RequestBody**
+   - **Purpose**: Binds the body of a web request to a method parameter.
+   - **Example**:
+     ```java
+     @PostMapping("/user")
+     public String createUser(@RequestBody User user) {
+         return "User created";
+     }
+     ```
+
+7. **@ResponseBody**
+   - **Purpose**: Indicates that the return value of a method should be used as the response body in a web request.
+   - **Example**:
+     ```java
+     @RequestMapping("/greet")
+     @ResponseBody
+     public String greet() {
+         return "Hello";
+     }
+     ```
+
+### Transaction Management Annotations
+
+1. **@Transactional**
+   - **Purpose**: Indicates that the annotated method or class should be configured to participate in a transaction.
+   - **Example**:
+     ```java
+     @Transactional
+     public void performTransaction() {
+         // transactional code
+     }
+     ```
+
+### Aspect-Oriented Programming (AOP) Annotations
+
+1. **@Aspect**
+   - **Purpose**: Indicates that a class is an aspect and contains advice methods.
+   - **Example**:
+     ```java
+     @Aspect
+     public class LoggingAspect {
+         @Before("execution(* com.example.MyService.*(..))")
+         public void logBefore() {
+             System.out.println("Logging before method execution");
+         }
+     }
+     ```
+
+2. **@Before**
+   - **Purpose**: Marks a method to be executed before a matched method execution.
+   - **Example**:
+     ```java
+     @Before("execution(* com.example.MyService.*(..))")
+     public void logBefore() {
+         System.out.println("Logging before method execution");
+     }
+     ```
+
+3. **@After**
+   - **Purpose**: Marks a method to be executed after a matched method execution.
+   - **Example**:
+     ```java
+     @After("execution(* com.example.MyService.*(..))")
+     public void logAfter() {
+         System.out.println("Logging after method execution");
+     }
+     ```
+
+4. **@Around**
+   - **Purpose**: Marks a method to be executed around a matched method execution.
+   - **Example**:
+     ```java
+     @Around("execution(* com.example.MyService.*(..))")
+     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+         System.out.println("Logging before method execution");
+         Object result = joinPoint.proceed();
+         System.out.println("Logging after method execution");
+         return result;
+     }
+     ```
+
+These annotations provide a powerful way to manage application configuration, dependency 
+injection, transaction management, web MVC configuration, and aspect-oriented programming
+ within the Spring Framework.
