@@ -227,7 +227,7 @@ const JSX1 = (
         <div>
           <h3>What date is it?</h3>
           { /* Change code below this line */ }
-          <CurrentDate date = {new Date().toString()}/>
+          <CurrentDate date = {Date()}/>
           { /* Change code above this line */ }
         </div>
       );
@@ -235,3 +235,5 @@ const JSX1 = (
   };
 
   
+
+
