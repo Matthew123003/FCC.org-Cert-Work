@@ -267,8 +267,8 @@ const JSX1 = (
     )
   };
   // Change code below this line
-  ShoppingCart.defaultProps = { items:0}
+  ShoppingCart.defaultProps = {items:0}
 
-  
+
 
 
