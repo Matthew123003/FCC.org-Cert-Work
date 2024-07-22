@@ -10,6 +10,8 @@ const JSX = <div>
 </ul>
 </div>;
 
+/******************************************************************************/
+
 const JSX1 = (
     <div>
     {/* Comment line in React*/}
@@ -18,6 +20,8 @@ const JSX1 = (
     </div>
   );
 
+
+/******************************************************************************/
 
   const JSX2 = (
     <div id="challenge-node">
@@ -31,11 +35,17 @@ const JSX1 = (
   ReactDOM.render(JSX2, document.getElementById("challenge-node"));
   {/*DO NOT FORGET THIS IS HOW TO RENDER TO THE REACT DOM */}
 
+
+  /******************************************************************************/
+
   const JSX3 = (
     <div className="myDiv">
       <h1>Add a class to this div</h1>
     </div>
   );
+
+
+  /******************************************************************************/
 
   const JSX4 = (
     <div>
@@ -45,6 +55,8 @@ const JSX1 = (
     </div>
   );
 
+  /******************************************************************************/
+
   const MyComponent = function() {
     // Change code below this line
     return(
@@ -52,6 +64,8 @@ const JSX1 = (
     )
     // Change code above this line
   }
+
+  /******************************************************************************/
 
   class MyComponent1 extends React.Component {
     constructor(props) {
@@ -71,6 +85,8 @@ const JSX1 = (
       // Change code above this line
     }
   };
+
+  /******************************************************************************/
 
   const ChildComponent = () => {
     return (
@@ -95,6 +111,8 @@ const JSX1 = (
       );
     }
   };
+
+  /******************************************************************************/
 
   const TypesOfFruit = () => {
     return (
@@ -137,6 +155,8 @@ const JSX1 = (
     }
   };
 
+  /******************************************************************************/
+
   class Fruits extends React.Component {
     constructor(props) {
       super(props);
@@ -153,6 +173,8 @@ const JSX1 = (
       );
     }
   };
+
+  /******************************************************************************/
   
   class TypesOfFood extends React.Component {
     constructor(props) {
@@ -170,6 +192,8 @@ const JSX1 = (
       );
     }
   };
+
+  /******************************************************************************/
 
   class TypesOfFood extends React.Component {
     constructor(props) {
@@ -207,6 +231,7 @@ const JSX1 = (
   
   ReactDOM.render(<MyComponent1 />, document.getElementById('challenge-node'));
 
+/******************************************************************************/
 
   const CurrentDate = (props) => {
     return (
@@ -234,6 +259,8 @@ const JSX1 = (
     }
   };
 
+  /******************************************************************************/
+
   const List = (props) => {
     { /* Change code below this line */ }
     return <p>{props.tasks.join(", ")}</p>
@@ -258,6 +285,8 @@ const JSX1 = (
       );
     }
   };
+
+  /******************************************************************************/
 
   const ShoppingCart = (props) => {
     return (
@@ -287,6 +316,67 @@ const JSX1 = (
       { /* Change code above this line */ }
     }
   };
+
+  /******************************************************************************/
+
+  const Items = (props) => {
+    return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+  };
+  
+  // Change code below this line
+  Items.propTypes = {quantity: PropTypes.number.isRequired}
+  // Change code above this line
+  
+  Items.defaultProps = {
+    quantity: 0
+  };
+  
+  class ShoppingCart02 extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      return <Items />
+    }
+  };
+
+  /******************************************************************************/
+
+  class App extends React.Component {
+    constructor(props) {
+      super(props);
+  
+    }
+    render() {
+      return (
+          <div>
+              { /* Change code below this line */ }
+              <Welcome name = "Matt"/>
+              { /* Change code above this line */ }
+          </div>
+      );
+    }
+  };
+  
+  class Welcome extends React.Component {
+    constructor(props) {
+      super(props);
+  
+    }
+    render() {
+      return (
+          <div>
+            { /* Change code below this line */ }
+            <p>Hello, <strong>{this.props.name}</strong>!</p>
+            { /* Change code above this line */ }
+          </div>
+      );
+    }
+  };
+
+   /******************************************************************************/
+
+   
 
 
 
