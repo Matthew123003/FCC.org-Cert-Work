@@ -1,7 +1,10 @@
-In React, handling events is similar to handling events in plain JavaScript, but with some syntax and conceptual differences. Below are explanations of various React event handling concepts and common event handlers like `handleClick` and `onClick`.
+In React, handling events is similar to handling events in plain JavaScript, but with some syntax and
+ conceptual differences. Below are explanations of various React event handling concepts and common event
+  handlers like `handleClick` and `onClick`.
 
 ### 1. **Handling Events in React**
-React events are named using camelCase, rather than lowercase. Also, with JSX you pass a function as the event handler, rather than a string.
+React events are named using camelCase, rather than lowercase. Also, with JSX you pass a function as the 
+event handler, rather than a string.
 
 ### 2. **Common Event Handlers in React**
 
@@ -164,7 +167,8 @@ class MyComponent extends React.Component {
 
 ### 5. **Event Pooling**
 
-React uses event pooling to improve performance. Event properties are reused across different events, and accessing event properties asynchronously might lead to unexpected results.
+React uses event pooling to improve performance. Event properties are reused across different events,
+ and accessing event properties asynchronously might lead to unexpected results.
 
 To work around this, you can call `event.persist()` to remove the event from the pool and retain its properties.
 
@@ -193,8 +197,13 @@ class MyComponent extends React.Component {
 
 ### 6. **Synthetic Events**
 
-React normalizes events so they have consistent properties across different browsers. These normalized events are called Synthetic Events. They work exactly like native events but are consistent across all browsers.
+React normalizes events so they have consistent properties across different browsers. These
+ normalized events are called Synthetic Events. They work exactly like native events but are 
+ consistent across all browsers.
 
 ### Summary
 
-React provides a consistent and efficient way to handle events in a declarative manner. By using camelCase event names and passing functions directly to event handlers, you can manage user interactions in a clean and maintainable way. Whether you're handling clicks, form submissions, or keyboard events, React's event system provides the tools you need to build interactive applications.
+React provides a consistent and efficient way to handle events in a declarative manner. By using
+ camelCase event names and passing functions directly to event handlers, you can manage user 
+ interactions in a clean and maintainable way. Whether you're handling clicks, form submissions,
+  or keyboard events, React's event system provides the tools you need to build interactive applications.
