@@ -1,31 +1,21 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-  
-  #chart {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .bar {
-    fill: steelblue;
-  }
-  
-  .axis-label {
-    font-size: 14px;
-    font-weight: bold;
-  }
-  
-  #tooltip {
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    display: none;
-    pointer-events: none;
-    font-size: 12px;
-  }
-  
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: orange;
+}
+
+.axis-label {
+  font-size: 14px;
+}
+
+#tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 5px;
+  background: lightsteelblue;
+  border: 1px solid #333;
+  border-radius: 5px;
+  pointer-events: none;
+}
