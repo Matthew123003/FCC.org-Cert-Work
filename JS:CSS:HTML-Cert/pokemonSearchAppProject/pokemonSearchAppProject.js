@@ -1,5 +1,7 @@
 document.getElementById('search-button').addEventListener('click', searchPokemon);
 
+/******************************************************************************/
+
 function searchPokemon() {
     const searchInput = document.getElementById('search-input').value.toLowerCase();
     const url = `https://pokeapi.co/api/v2/pokemon/${searchInput}`;
@@ -18,6 +20,8 @@ function searchPokemon() {
             alert(error.message);
         });
 }
+
+/******************************************************************************/
 
 function displayPokemon(pokemon) {
     document.getElementById('pokemon-name').textContent = pokemon.name.toUpperCase();
@@ -44,3 +48,5 @@ function displayPokemon(pokemon) {
 
     document.querySelector('.pokemon-info').style.display = 'block';
 }
+
+/******************************************************************************/
