@@ -38,6 +38,8 @@ callback, use console.error() to log possible errors to the console with the tex
 Note: Now you can terminate your code with a semicolon. You couldn't do that in the previous steps because you'll
  signal to JavaScript to stop parsing your code, which will affect the fetch() syntax.
 
+ Inside the template literal, create a div element with the id set to the index from the .forEach() array method.
+  Remember to use template interpolation to do this.
   
   */
 
