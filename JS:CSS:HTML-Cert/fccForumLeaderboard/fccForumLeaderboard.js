@@ -70,6 +70,36 @@ const viewCount = (views) => {
   return views;
 };
 
+const avatars = (posters, users) => {
+  return posters
+    .map((poster) => {
+      const user = users.find((user) => user.id === poster.user_id);
+      if (user) {
+        // Replace the placeholder {size} in the avatar_template with the size 30
+// Declare a constant named avatar and assign it the modified avatar URL
+const avatar = user.avatar_template.replace(/{size}/, 30);
+
+// Construct the userAvatarUrl
+// Declare a constant named userAvatarUrl
+const userAvatarUrl = 
+
+  // Check if the avatar string starts with "/user_avatar/"
+  avatar.startsWith("/user_avatar/") 
+      
+      // If the condition is true (avatar starts with "/user_avatar/"), use the concat method to concatenate avatarUrl and avatar
+      ? avatarUrl.concat(avatar) 
+      
+      // If the condition is false (avatar does not start with "/user_avatar/"), return the original avatar string
+      : avatar;
+
+// The ternary operator ensures the avatar URL is correctly formed whether it's a relative or absolute URL
+
+        return `<img src="${userAvatarUrl}" alt="${user.name}" />`;
+      }
+    })
+    .join("");
+};
+
 const fetchData = async () => {
   try {
     const res = await fetch(forumLatest);
@@ -101,10 +131,15 @@ const showLatestPosts = (data) => {
     return `
     <tr>
       <td>
-        <p class="post-title">${title}</p>
+        <a class="post-title" target="_blank" href="${forumTopicUrl}${slug}/${id}">${title}</a>
 
+        ${forumCategory(category_id)}
       </td>
-      <td></td>
+      <td>
+        <div class="avatar-container">
+          ${avatars(posters, users)}
+        </div>
+      </td>
       <td>${posts_count - 1}</td>
       <td>${viewCount(views)}</td>
       <td>${timeAgo(bumped_at)}</td>
