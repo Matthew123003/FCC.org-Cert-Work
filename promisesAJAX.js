@@ -275,6 +275,7 @@ Notes:
     xhr.readyState: The current state of the request. XMLHttpRequest.DONE indicates the request is complete.
     xhr.status: The HTTP status code of the response.
     xhr.responseText: The response data as a string.
-    JSON.parse(): 
+    JSON.parse(): Parses a JSON string and returns the corresponding JavaScript object.
+    xhr.send(body): Sends the request with an optional body containing data. 
 
  */
