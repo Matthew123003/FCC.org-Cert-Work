@@ -1,13 +1,13 @@
 
-  // GETTING INFO FROM THE HTML DOM AND SETTING IT TO JS VARIABLES
+// GETTING INFO FROM THE HTML DOM AND SETTING IT TO JS VARIABLES
   const authorContainer = document.getElementById('author-container');
   const loadMoreBtn = document.getElementById('load-more-btn');
 
-  // ADD EVENT LISTENER
+// ADD EVENT LISTENER
   loadMoreBtn.addEventListener('click', fetchMoreAuthors);
 
 
-  //GET REQUEST
+//GET REQUEST (READ)
 
   fetch('https://example.com/api/resource')
   .then(response => {
@@ -23,7 +23,7 @@
     console.error('There was a problem with the fetch operation:', error);
   });
 
-  // POST REQUEST
+// POST REQUEST (CREATE)
 
   fetch('https://example.com/api/resource', {
     method: 'POST',
@@ -48,7 +48,7 @@
     console.error('There was a problem with the fetch operation:', error);
   });
 
-  // PUT REQUEST
+// PUT REQUEST (UPDATE)
 
   fetch('https://example.com/api/resource/1', {
     method: 'PUT',
@@ -74,7 +74,7 @@
   });
 
   
-  // DELETE REQUEST
+// DELETE REQUEST (DELETE)
 
   fetch('https://example.com/api/resource/1', {
     method: 'DELETE',
@@ -96,7 +96,7 @@
   });
 
   
-  // PATCH REQUEST
+// PATCH REQUEST (PARTIALLY UPDATE)
 
   fetch('https://example.com/api/resource/1', {
     method: 'PATCH',
@@ -119,6 +119,38 @@
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
   });
+
+// OPTIONS REQUEST (GETS OPTIONS AVAILABLE FOR PAGE OR API)
+
+  fetch('https://example.com/api/resource', {
+    method: 'OPTIONS'
+  })
+    .then(response => response.headers.get('Allow'))
+    .then(methods => console.log('Supported methods:', methods))
+    .catch(error => console.error('Error:', error));
+  
+// HEAD REQUEST (GET HEADERS)
+
+fetch('https://example.com/api/resource', {
+  method: 'HEAD'
+})
+  .then(response => {
+    console.log('Headers:', response.headers);
+  })
+  .catch(error => console.error('Error:', error));
+
+
+/* 
+Notes:
+
+    fetch is used to make HTTP requests and returns a Promise that resolves to the Response object
+     representing the response to the request.
+
+    response.json() parses the JSON-formatted response body and returns a Promise that resolves with the result.
+
+    Always handle errors using .catch() to manage any network or request errors.
+
+*/
 
 
   /*The Fetch API is a built-in JavaScript interface to make network requests to a server. It has a fetch() method 
