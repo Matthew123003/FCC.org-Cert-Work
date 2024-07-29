@@ -77,7 +77,41 @@ Suppose you have the following HTML:-->
     Set innerHTML: The myDiv.innerHTML property sets the HTML content inside the div element to a new paragraph.
     Log New Content: The console.log(myDiv.innerHTML) statement prints the new content to the console.-->
 
+<!--Security Considerations
+
+When using innerHTML, be cautious of security risks such as Cross-Site Scripting (XSS). Never set 
+innerHTML with user input directly, as this can introduce vulnerabilities. Always sanitize any data 
+coming from untrusted sources before injecting it into the DOM.
+Best Practices
+
+    Sanitize User Input: Use libraries like DOMPurify to sanitize user input before setting it with innerHTML.
+    Use Safer Alternatives: When possible, use methods like textContent for inserting plain text or 
+    DOM manipulation methods (createElement, appendChild, etc.) for creating elements.-->
+
+<!-- EXAMPLE USING TEXT CONTEXT *************************************************************************************-->
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>textContent Example</title>
+    </head>
+    <body>
+        <div id="myDiv">Hello, World!</div>
+    
+        <script>
+            // Step 1: Select the element by its ID
+            const myDiv = document.getElementById('myDiv');
+    
+            // Step 2: Set the textContent of the element
+            myDiv.textContent = 'This is a safe text content';
+    
+            // Step 3: Log the new content to the console
+            console.log(myDiv.textContent); // Output: "This is a safe text content"
+        </script>
+    </body>
+    </html>
 
 
+    
 
 
