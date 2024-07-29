@@ -1,0 +1,83 @@
+<!-- What is innerHTML?
+
+innerHTML is a property of DOM (Document Object Model) elements in JavaScript that allows you to get or set
+ the HTML content inside an element. It provides a way to manipulate the contents of an element dynamically,
+  enabling you to add, remove, or replace HTML elements and content.
+
+
+  How innerHTML Works
+
+    Getting Content: When you access the innerHTML property, it returns the HTML content inside the 
+    element as a string.
+    Setting Content: When you set the innerHTML property, it parses the string you assign to it and 
+    replaces the current HTML content of the element with the new content.
+
+Example: Getting innerHTML
+
+Suppose you have the following HTML:-->
+
+<!-- GETTING INNERHTML *************************************************************************************************-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>innerHTML Example</title>
+</head>
+<body>
+    <div id="myDiv">Hello, World!</div>
+
+    <script>
+        // Step 1: Select the element by its ID
+        const myDiv01 = document.getElementById('myDiv');
+
+        // Step 2: Get the innerHTML of the element
+        const content = myDiv02.innerHTML;
+
+        // Step 3: Log the content to the console
+        console.log(content); // Output: "Hello, World!"
+    </script>
+</body>
+</html>
+
+<!--Explanation
+
+    HTML Structure: A div element with an ID of myDiv contains the text "Hello, World!".
+    Select Element: The document.getElementById('myDiv') method selects the div element with the ID myDiv.
+    Get innerHTML: The myDiv.innerHTML property retrieves the HTML content inside the div element.
+    Log Content: The console.log(content) statement prints the content to the console.-->
+
+
+<!-- SETTING INNERHTML *************************************************************************************************-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>innerHTML Example</title>
+</head>
+<body>
+    <div id="myDiv">Hello, World!</div>
+
+    <script>
+        // Step 1: Select the element by its ID
+        const myDiv02 = document.getElementById('myDiv');
+
+        // Step 2: Set the innerHTML of the element
+        myDiv02.innerHTML = '<p>This is a paragraph</p>';
+
+        // Step 3: Log the new content to the console
+        console.log(myDiv02.innerHTML); // Output: "<p>This is a paragraph</p>"
+    </script>
+</body>
+</html>
+
+<!--Explanation
+
+    HTML Structure: A div element with an ID of myDiv contains the text "Hello, World!".
+    Select Element: The document.getElementById('myDiv') method selects the div element with the ID myDiv.
+    Set innerHTML: The myDiv.innerHTML property sets the HTML content inside the div element to a new paragraph.
+    Log New Content: The console.log(myDiv.innerHTML) statement prints the new content to the console.-->
+
+
+
+
+
