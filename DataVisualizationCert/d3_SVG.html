@@ -368,4 +368,35 @@ This line adds a fill color to the rect, making it blue. This is optional and ca
 
 <!--*************************************************************************************************************************-->
 
+<body>
+    <script>
+      const dataset12 = [12, 31, 22, 17, 25, 18, 29, 14, 9];
+  
+      const w05 = 500;
+      const h05 = 100;
+  
+      const svg05 = d3.select("body")
+                    .append("svg")
+                    .attr("width", w05)
+                    .attr("height", h05);
+  
+      svg05.selectAll("rect")
+         .data(dataset12)
+         .enter()
+         .append("rect")
+         .attr("x", (d, i) => i * 30)
+         .attr("y", 0)
+         .attr("width", 25)
+         .attr("height", (d, i) => {
+           // Add your code below this line
+              return d * 3;
+            // Remember that multiplying all data points by the same constant scales the data (like zooming in).
+            // It helps to see the differences between bar values in this example.
+  
+           // Add your code above this line
+         });
+    </script>
+</body>
+
+<!--*************************************************************************************************************************-->
 
