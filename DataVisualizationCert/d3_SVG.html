@@ -400,3 +400,34 @@ This line adds a fill color to the rect, making it blue. This is optional and ca
 
 <!--*************************************************************************************************************************-->
 
+<body>
+    <script>
+      const dataset13 = [12, 31, 22, 17, 25, 18, 29, 14, 9];
+  
+      const w06 = 500;
+      const h06 = 100;
+  
+      const svg06 = d3.select("body")
+                    .append("svg")
+                    .attr("width", w06)
+                    .attr("height", h06);
+  
+      svg06.selectAll("rect")
+         .data(dataset13)
+         .enter()
+         .append("rect")
+         .attr("x", (d, i) => i * 30)
+         .attr("y", (d, i) => {
+           // Add your code below this line
+  
+              return h - 3 * d;
+  
+           // Add your code above this line
+         })
+         .attr("width", 25)
+         .attr("height", (d, i) => 3 * d);
+    </script>
+</body>
+
+<!--*************************************************************************************************************************-->
+
