@@ -596,12 +596,12 @@ svg.selectAll("text") // Select all existing 'text' elements within the 'svg' el
       const w10 = 500;
       const h10 = 500;
   
-      const svg = d3.select("body")
+      const svg10 = d3.select("body")
                     .append("svg")
                     .attr("width", w10)
                     .attr("height", h10);
   
-      svg.selectAll("circle")
+      svg10.selectAll("circle")
          .data(dataset17)
          .enter()
          .append("circle")
@@ -617,6 +617,50 @@ The d parameter in the callback function refers to the current item in dataset, 
  is an array for each point. You use bracket notation, like d[0], to access the values
   in that array.
 -->
+
+<!--*************************************************************************************************************************-->
+
+<body>
+    <script>
+      const dataset18 = [
+                    [ 34,    78 ],
+                    [ 109,   280 ],
+                    [ 310,   120 ],
+                    [ 79,    411 ],
+                    [ 420,   220 ],
+                    [ 233,   145 ],
+                    [ 333,   96 ],
+                    [ 222,   333 ],
+                    [ 78,    320 ],
+                    [ 21,    123 ]
+                  ];
+  
+  
+      const w11 = 500;
+      const h11 = 500;
+  
+      const svg11 = d3.select("body")
+                    .append("svg")
+                    .attr("width", w11)
+                    .attr("height", h11);
+  
+      svg11.selectAll("circle")
+         .data(dataset18)
+         .enter()
+         .append("circle")
+         .attr("cx", (d, i) => d[0])
+         .attr("cy", (d, i) => h - d[1])
+         .attr("r", 5);
+  
+      svg11.selectAll("text")
+         .data(dataset)
+         .enter()
+         .append("text")
+         .attr("x", d => d[0] + 5) // Set the x attribute 5 units more than the cx value
+         .attr("y", d => h - d[1]) // Set the y attribute the same as the cy value
+         .text(d => `${d[0]}, ${d[1]}`) // Set the text to the two values separated by a comma and a space
+    </script>
+</body>
 
 <!--*************************************************************************************************************************-->
 
