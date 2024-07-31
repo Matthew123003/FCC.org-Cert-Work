@@ -484,7 +484,11 @@ svg.selectAll("text") // Select all existing 'text' elements within the 'svg' el
 
   .attr("fill", "red") // Set the fill color of each 'text' element to red
 
-  .attr("font-size", 25); // Set the font size of each 'text' element to 25
+  .attr("font-size", 25) // Set the font size of each 'text' element to 25
+
+  .attr("class", "bar") // .attr(): This is a D3 method used to set or get the value of an attribute for the selected elements. In this case, it's used to set an attribute.
+                        // "class": This is the name of the attribute being set. In HTML, the class attribute is used to assign one or more class names to an element. These class names can be used to apply CSS styles or target the element with JavaScript.
+                        //"bar": This is the value being assigned to the class attribute. It means that the element will have the class name bar.
 </script>
 
 <!--*************************************************************************************************************************-->
