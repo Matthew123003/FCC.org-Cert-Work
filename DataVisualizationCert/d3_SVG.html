@@ -460,7 +460,9 @@ This line adds a fill color to the rect, making it blue. This is optional and ca
          .attr("height", (d, i) => 3 * d) // Set the 'height' attribute of each 'rect' element based on the data value 'd'
          // .attr("height", (d, i) => 3 * d): This sets the height attribute of each <rect> element based on the data value d. The height is calculated by multiplying the data value by 3, scaling the bars according to the data.
          .attr("fill", "navy") // can add color to svg object using "fill", and then setting the fill color in this case "navy"
-        // .attr("fill", "navy"): This sets the fill attribute of each <rect> element to the color "navy". The fill attribute in SVG specifies the color that will be used to paint the interior of the shape.
+         // .attr("fill", "navy"): This sets the fill attribute of each <rect> element to the color "navy". The fill attribute in SVG specifies the color that will be used to paint the interior of the shape.
+         .append("title")
+         .text((d) => d)
     </script>
 </body>
 
