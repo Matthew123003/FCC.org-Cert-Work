@@ -438,24 +438,22 @@ This line adds a fill color to the rect, making it blue. This is optional and ca
       const w07 = 500;
       const h07 = 100;
   
-      const svg07 = d3.select("body")
-                    .append("svg")
-                    .attr("width", w07)
-                    .attr("height", h07);
+      const svg07 = d3.select("body") // Select the body element of the HTML document
+                    .append("svg") // Append an SVG (Scalable Vector Graphics) element to the body
+                    .attr("width", w07) // Set the width attribute of the SVG to the value of the variable w07
+                    .attr("height", h07); // Set the height attribute of the SVG to the value of the variable h07
   
-      svg07.selectAll("rect")
-         .data(dataset)
-         .enter()
-         .append("rect")
-         .attr("x", (d, i) => i * 30)
-         .attr("y", (d, i) => h - 3 * d)
-         .attr("width", 25)
-         .attr("height", (d, i) => 3 * d)
+      svg07.selectAll("rect") // Select all existing 'rect' elements within the 'svg07' element
+         .data(dataset) // Bind the 'dataset' array to the selected elements
+         .enter() // Create a placeholder for each data point that doesn't have a corresponding 'rect' element
+         .append("rect") // Append a 'rect' element for each placeholder
+         .attr("x", (d, i) => i * 30) // Set the 'x' attribute of each 'rect' element based on the index of the data point
+         .attr("y", (d, i) => h - 3 * d) // Set the 'y' attribute of each 'rect' element based on the data value 'd'
+         .attr("width", 25) // Set the 'width' attribute of each 'rect' element to a fixed value of 25
+         .attr("height", (d, i) => 3 * d) // Set the 'height' attribute of each 'rect' element based on the data value 'd'
          // Add your code below this line
-         .attr("fill", "navy")
-  
-  
-         // Add your code above this line
+         .attr("fill", "navy") // can add color to svg object using "fill", and then setting the fill color in this case "navy"
+        // Add your code above this line
     </script>
 </body>
 
