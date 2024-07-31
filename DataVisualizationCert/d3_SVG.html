@@ -567,7 +567,7 @@ svg.selectAll("text") // Select all existing 'text' elements within the 'svg' el
   
       svg09.selectAll("circle")
          // Add your code below this line
-            .data(dataset)
+            .data(dataset16)
             .enter()
             .append("circle");
          // Add your code above this line
@@ -579,7 +579,7 @@ svg.selectAll("text") // Select all existing 'text' elements within the 'svg' el
 
 <body>
     <script>
-      const dataset = [
+      const dataset17 = [
                     [ 34,    78 ],
                     [ 109,   280 ],
                     [ 310,   120 ],
@@ -593,16 +593,16 @@ svg.selectAll("text") // Select all existing 'text' elements within the 'svg' el
                   ];
   
   
-      const w = 500;
-      const h = 500;
+      const w10 = 500;
+      const h10 = 500;
   
       const svg = d3.select("body")
                     .append("svg")
-                    .attr("width", w)
-                    .attr("height", h);
+                    .attr("width", w10)
+                    .attr("height", h10);
   
       svg.selectAll("circle")
-         .data(dataset)
+         .data(dataset17)
          .enter()
          .append("circle")
          .attr("cx", d => d[0])  // Set the 'cx' attribute to the first number in each array item
@@ -619,3 +619,4 @@ The d parameter in the callback function refers to the current item in dataset, 
 -->
 
 <!--*************************************************************************************************************************-->
+
