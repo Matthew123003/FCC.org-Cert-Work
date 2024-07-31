@@ -495,3 +495,49 @@ svg.selectAll("text") // Select all existing 'text' elements within the 'svg' el
 
 <!--*************************************************************************************************************************-->
 
+<style>
+    .bar:hover {
+      fill: brown;
+    }
+  </style>
+  <body>
+    <script>
+      const dataset15 = [12, 31, 22, 17, 25, 18, 29, 14, 9];
+  
+      const w08 = 500;
+      const h08 = 100;
+  
+      const svg08 = d3.select("body")
+                    .append("svg")
+                    .attr("width", w08)
+                    .attr("height", h08);
+  
+      svg08.selectAll("rect")
+         .data(dataset15)
+         .enter()
+         .append("rect")
+         .attr("x", (d, i) => i * 30)
+         .attr("y", (d, i) => h - 3 * d)
+         .attr("width", 25)
+         .attr("height", (d, i) => d * 3)
+         .attr("fill", "navy")
+         .attr("class", "bar")
+         // Add your code below this line
+         .append("title")
+         .text((d) => d)
+  
+         // Add your code above this line
+  
+      svg08.selectAll("text")
+         .data(dataset15)
+         .enter()
+         .append("text")
+         .text((d) => d)
+         .attr("x", (d, i) => i * 30)
+         .attr("y", (d, i) => h - (d * 3 + 3))
+  
+    </script>
+</body>
+
+<!--*************************************************************************************************************************-->
+
