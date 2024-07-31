@@ -541,3 +541,39 @@ svg.selectAll("text") // Select all existing 'text' elements within the 'svg' el
 
 <!--*************************************************************************************************************************-->
 
+<body>
+    <script>
+      const dataset16 = [
+                    [ 34,    78 ],
+                    [ 109,   280 ],
+                    [ 310,   120 ],
+                    [ 79,    411 ],
+                    [ 420,   220 ],
+                    [ 233,   145 ],
+                    [ 333,   96 ],
+                    [ 222,   333 ],
+                    [ 78,    320 ],
+                    [ 21,    123 ]
+                  ];
+  
+  
+      const w09 = 500;
+      const h09 = 500;
+  
+      const svg09 = d3.select("body")
+                    .append("svg")
+                    .attr("width", w09)
+                    .attr("height", h09);
+  
+      svg09.selectAll("circle")
+         // Add your code below this line
+            .data(dataset)
+            .enter()
+            .append("circle");
+         // Add your code above this line
+  
+    </script>
+</body>
+
+<!--*************************************************************************************************************************-->
+
