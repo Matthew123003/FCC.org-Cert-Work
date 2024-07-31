@@ -465,4 +465,23 @@ This line adds a fill color to the rect, making it blue. This is optional and ca
 </body>
 
 <!--*************************************************************************************************************************-->
+<script>
 
+svg.selectAll("text") // Select all existing 'text' elements within the 'svg' element
+  
+  .data(dataset) // Bind the 'dataset' array to the selected elements
+  
+  .enter() // Create a placeholder for each data point that doesn't have a corresponding 'text' element
+  
+  .append("text") // Append a 'text' element for each placeholder
+  
+  .attr("x", (d, i) => i * 30) // Set the 'x' attribute of each 'text' element based on the index of the data point
+ 
+  .attr("y", (d, i) => h - 3 * d - 3)  // Set the 'y' attribute of each 'text' element so it sits 3 units higher than the corresponding bar
+  
+  .text(d => d) // Set the text content of each 'text' element to the corresponding data point value
+
+  .attr("fill", "red") // Set the fill color of each 'text' element to red
+
+  .attr("font-size", 25); // Set the font size of each 'text' element to 25
+</script>
