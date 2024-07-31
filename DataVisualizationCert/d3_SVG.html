@@ -731,21 +731,21 @@ The d parameter in the callback function refers to the current item in dataset, 
                     [ 21,    123 ]
                   ];
   
-      const w = 500;
-      const h = 500;
+      const w12 = 500;
+      const h12 = 500;
   
       // Padding between the SVG boundary and the plot
-      const padding = 30;
+      const padding12 = 30;
   
       // Create an x and y scale
   
-      const xScale = d3.scaleLinear()
+      const xScale12 = d3.scaleLinear()
                       .domain([0, d3.max(dataset19, (d) => d[0])])
                       .range([padding, w - padding]);
   
       // Add your code below this line
   
-      const yScale = d3.scaleLinear()
+      const yScale12 = d3.scaleLinear()
       .domain([0, d3.max(dataset19, (d) => d[1])])
       .range([h - padding, padding]);
   
@@ -759,6 +759,65 @@ The d parameter in the callback function refers to the current item in dataset, 
     </script>
 </body>
 
+
+<!--*************************************************************************************************************************-->
+
+<body>
+    <script>
+      const dataset20 = [
+                    [ 34,     78 ],
+                    [ 109,   280 ],
+                    [ 310,   120 ],
+                    [ 79,   411 ],
+                    [ 420,   220 ],
+                    [ 233,   145 ],
+                    [ 333,   96 ],
+                    [ 222,    333 ],
+                    [ 78,    320 ],
+                    [ 21,   123 ]
+                  ];
+  
+      const w = 500;
+      const h = 500;
+      const padding = 60;
+  
+      const xScale = d3.scaleLinear()
+                       .domain([0, d3.max(dataset, (d) => d[0])])
+                       .range([padding, w - padding]);
+  
+      const yScale = d3.scaleLinear()
+                       .domain([0, d3.max(dataset, (d) => d[1])])
+                       .range([h - padding, padding]);
+  
+      const svg = d3.select("body")
+                    .append("svg")
+                    .attr("width", w)
+                    .attr("height", h);
+  
+      svg.selectAll("circle")
+         .data(dataset20)
+         .enter()
+         .append("circle")
+         // Add your code below this line
+          .attr("cx", (d) => xScale(d[0])) // Set the 'cx' attribute using 'xScale'
+        .attr("cy", (d) => yScale(d[1])) // Set the 'cy' attribute using 'yScale'
+        .attr("r", 5); // Set the radius to 5 units
+          // Add your code above this line
+  
+      svg.selectAll("text")
+         .data(dataset20)
+         .enter()
+         .append("text")
+         .text((d) =>  (d[0] + ", "
+   + d[1]))
+         // Add your code below this line
+  
+         .attr("x", (d) => xScale(d[0] + 10)) // Set the 'x' attribute using 'xScale' and add 10 units offset
+         .attr("y", (d) => yScale(d[1])) // Set the 'y' attribute using 'yScale'
+  
+         // Add your code above this line
+    </script>
+</body>
 
 <!--*************************************************************************************************************************-->
 
