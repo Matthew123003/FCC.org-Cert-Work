@@ -821,3 +821,70 @@ The d parameter in the callback function refers to the current item in dataset, 
 
 <!--*************************************************************************************************************************-->
 
+<body>
+    <script>
+      const dataset21 = [ // Define the dataset as an array of arrays, each containing two numbers
+        [ 34, 78 ], // Data point 1: [x, y]
+        [ 109, 280 ], // Data point 2: [x, y]
+        [ 310, 120 ], // Data point 3: [x, y]
+        [ 79, 411 ], // Data point 4: [x, y]
+        [ 420, 220 ], // Data point 5: [x, y]
+        [ 233, 145 ], // Data point 6: [x, y]
+        [ 333, 96 ], // Data point 7: [x, y]
+        [ 222, 333 ], // Data point 8: [x, y]
+        [ 78, 320 ], // Data point 9: [x, y]
+        [ 21, 123 ] // Data point 10: [x, y]
+      ];
+  
+      const w21 = 500; // Define the width of the SVG container
+      const h21 = 500; // Define the height of the SVG container
+      const padding21 = 60; // Define the padding around the SVG container
+  
+      const xScale21 = d3.scaleLinear() // Create a linear scale for the x-axis
+        .domain([0, d3.max(dataset21, (d) => d[0])]) // Set the domain from 0 to the maximum x value in the dataset
+        .range([padding21, w - padding21]); // Set the range from the padding to the width minus padding
+  
+      const yScale21 = d3.scaleLinear() // Create a linear scale for the y-axis
+        .domain([0, d3.max(dataset21, (d) => d[1])]) // Set the domain from 0 to the maximum y value in the dataset
+        .range([h - padding21, padding21]); // Set the range from the height minus padding to the padding (inverted to keep the chart right-side-up)
+  
+      const svg21 = d3.select("body") // Select the body element
+        .append("svg") // Append an SVG container to the body
+        .attr("width", w21) // Set the width of the SVG
+        .attr("height", h21); // Set the height of the SVG
+  
+      svg21.selectAll("circle") // Select all circle elements within the SVG (none exist yet)
+        .data(dataset21) // Bind the dataset to the circle elements
+        .enter() // Create placeholder elements for each data point
+        .append("circle") // Append a circle for each placeholder
+        .attr("cx", (d) => xScale21(d[0])) // Set the 'cx' attribute using 'xScale' to position the circle horizontally
+        .attr("cy", (d) => yScale21(d[1])) // Set the 'cy' attribute using 'yScale' to position the circle vertically
+        .attr("r", 5); // Set the radius of each circle to 5 units
+  
+      svg21.selectAll("text") // Select all text elements within the SVG (none exist yet)
+        .data(dataset21) // Bind the dataset to the text elements
+        .enter() // Create placeholder elements for each data point
+        .append("text") // Append a text element for each placeholder
+        .text((d) => (d[0] + "," + d[1])) // Set the text content to the data values
+        .attr("x", (d) => xScale21(d[0] + 10)) // Set the 'x' attribute using 'xScale' with an offset of 10 units
+        .attr("y", (d) => yScale21(d[1])); // Set the 'y' attribute using 'yScale'
+  
+      const xAxis = d3.axisBottom(xScale21); // Create a bottom x-axis using 'xScale'
+      const yAxis = d3.axisLeft(yScale21); // Create a left y-axis using 'yScale'
+      
+  
+      svg21.append("g") // Append a 'g' element to the SVG to contain the x-axis
+        .attr("transform", "translate(0," + (h - padding21) + ")") // Move the x-axis to the bottom of the SVG
+        .call(xAxis); // Render the x-axis
+  
+      
+      svg.append("g") // Append a 'g' element to the SVG to contain the y-axis
+        .attr("transform", "translate(60, 0)") // Move the y-axis to the left of the SVG
+        .call(yAxis); // Render the y-axis
+      
+  
+    </script>
+</body>
+
+
+<!--*************************************************************************************************************************--> 
