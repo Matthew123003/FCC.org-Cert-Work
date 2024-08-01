@@ -1,364 +1,161 @@
 // GET REQUEST (READ) ****************************************************************************************************
 
-async function getData() {
-    try {
-      const response = await fetch('https://example.com/api/resource');
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+async function getData() { // Declare an asynchronous function named getData.
+  try { // Begin a try block to handle potential errors.
+      const response = await fetch('https://example.com/api/resource'); // Send a GET request to the specified URL and wait for the response.
+      if (!response.ok) { // Check if the response status code is not in the range 200-299.
+          throw new Error('Network response was not ok'); // If not OK, throw an error with a descriptive message.
       }
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-    }
+      const data = await response.json(); // Convert the response body to JSON format and wait for the result.
+      console.log(data); // Log the JSON data to the console.
+  } catch (error) { // Catch any errors that occur during the fetch operation.
+      console.error('There was a problem with the fetch operation:', error); // Log the error message to the console.
   }
-  
-  getData();
+}
 
+getData(); // Call the getData function to execute the GET request.
 
-  async function getData() {
-    try {
-      // Send a GET request to the specified URL.
-      const response = await fetch('https://example.com/api/resource');
-      
-      // Check if the response is not OK (status code not in the range 200-299).
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      
-      // Convert the response to JSON format.
-      const data = await response.json();
-      
-      // Log the retrieved data to the console.
-      console.log(data);
-    } catch (error) {
-      // Handle any errors that occur during the fetch operation.
-      console.error('There was a problem with the fetch operation:', error);
-    }
-  }
-  
-  // Call the getData function to execute the GET request.
-  getData();
-  
 
 // POST REQUEST (CREATE) ****************************************************************************************************
 
-async function postData() {
-    try {
-      const response = await fetch('https://example.com/api/resource', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          key1: 'value1',
-          key2: 'value2'
-        })
+async function postData() { // Declare an asynchronous function named postData.
+  try { // Begin a try block to handle potential errors.
+      const response = await fetch('https://example.com/api/resource', { // Send a POST request to the specified URL with options.
+          method: 'POST', // Specify that this is a POST request.
+          headers: {
+              'Content-Type': 'application/json' // Indicate that the request body is in JSON format.
+          },
+          body: JSON.stringify({ // Convert the data to be sent into a JSON string.
+              key1: 'value1',
+              key2: 'value2'
+          })
       });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+      if (!response.ok) { // Check if the response status code is not in the range 200-299.
+          throw new Error('Network response was not ok'); // If not OK, throw an error with a descriptive message.
       }
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-    }
+      const data = await response.json(); // Convert the response body to JSON format and wait for the result.
+      console.log(data); // Log the JSON data to the console.
+  } catch (error) { // Catch any errors that occur during the fetch operation.
+      console.error('There was a problem with the fetch operation:', error); // Log the error message to the console.
   }
-  
-  postData();
+}
+
+postData(); // Call the postData function to execute the POST request.
 
 
-  async function postData() {
-    try {
-      // Send a POST request to the specified URL with the specified options.
-      const response = await fetch('https://example.com/api/resource', {
-        method: 'POST', // Specify that this is a POST request.
-        headers: {
-          'Content-Type': 'application/json' // Indicate that the request body is in JSON format.
-        },
-        body: JSON.stringify({ // Convert the data to be sent into a JSON string.
-          key1: 'value1',
-          key2: 'value2'
-        })
-      });
-      
-      // Check if the response is not OK (status code not in the range 200-299).
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      
-      // Convert the response to JSON format.
-      const data = await response.json();
-      
-      // Log the server's response to the console.
-      console.log(data);
-    } catch (error) {
-      // Handle any errors that occur during the fetch operation.
-      console.error('There was a problem with the fetch operation:', error);
-    }
-  }
-  
-  // Call the postData function to execute the POST request.
-  postData();
-  
-
-  
 // PUT REQUEST (UPDATE) ****************************************************************************************************
 
-async function putData() {
-    try {
-      const response = await fetch('https://example.com/api/resource/1', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          key1: 'updatedValue1',
-          key2: 'updatedValue2'
-        })
+async function putData() { // Declare an asynchronous function named putData.
+  try { // Begin a try block to handle potential errors.
+      const response = await fetch('https://example.com/api/resource/1', { // Send a PUT request to the specified URL with options.
+          method: 'PUT', // Specify that this is a PUT request.
+          headers: {
+              'Content-Type': 'application/json' // Indicate that the request body is in JSON format.
+          },
+          body: JSON.stringify({ // Convert the updated data into a JSON string.
+              key1: 'updatedValue1',
+              key2: 'updatedValue2'
+          })
       });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+      if (!response.ok) { // Check if the response status code is not in the range 200-299.
+          throw new Error('Network response was not ok'); // If not OK, throw an error with a descriptive message.
       }
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-    }
+      const data = await response.json(); // Convert the response body to JSON format and wait for the result.
+      console.log(data); // Log the JSON data to the console.
+  } catch (error) { // Catch any errors that occur during the fetch operation.
+      console.error('There was a problem with the fetch operation:', error); // Log the error message to the console.
   }
-  
-  putData();
+}
 
+putData(); // Call the putData function to execute the PUT request.
 
-  async function putData() {
-    try {
-      // Send a PUT request to the specified URL with the specified options.
-      const response = await fetch('https://example.com/api/resource/1', {
-        method: 'PUT', // Specify that this is a PUT request.
-        headers: {
-          'Content-Type': 'application/json' // Indicate that the request body is in JSON format.
-        },
-        body: JSON.stringify({ // Convert the updated data into a JSON string.
-          key1: 'updatedValue1',
-          key2: 'updatedValue2'
-        })
-      });
-      
-      // Check if the response is not OK (status code not in the range 200-299).
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      
-      // Convert the response to JSON format.
-      const data = await response.json();
-      
-      // Log the server's response to the console.
-      console.log(data);
-    } catch (error) {
-      // Handle any errors that occur during the fetch operation.
-      console.error('There was a problem with the fetch operation:', error);
-    }
-  }
-  
-  // Call the putData function to execute the PUT request.
-  putData();
-   
 
 // PATCH REQUEST (PARTIALLY UPDATE) ****************************************************************************************************
 
-async function patchData() {
-    try {
-      const response = await fetch('https://example.com/api/resource/1', {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          key1: 'updatedValue1'
-        })
+async function patchData() { // Declare an asynchronous function named patchData.
+  try { // Begin a try block to handle potential errors.
+      const response = await fetch('https://example.com/api/resource/1', { // Send a PATCH request to the specified URL with options.
+          method: 'PATCH', // Specify that this is a PATCH request.
+          headers: {
+              'Content-Type': 'application/json' // Indicate that the request body is in JSON format.
+          },
+          body: JSON.stringify({ // Convert the partial data update into a JSON string.
+              key1: 'updatedValue1'
+          })
       });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+      if (!response.ok) { // Check if the response status code is not in the range 200-299.
+          throw new Error('Network response was not ok'); // If not OK, throw an error with a descriptive message.
       }
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-    }
+      const data = await response.json(); // Convert the response body to JSON format and wait for the result.
+      console.log(data); // Log the JSON data to the console.
+  } catch (error) { // Catch any errors that occur during the fetch operation.
+      console.error('There was a problem with the fetch operation:', error); // Log the error message to the console.
   }
-  
-  patchData();
+}
 
-
-  async function patchData() {
-    try {
-      // Send a PATCH request to the specified URL with the specified options.
-      const response = await fetch('https://example.com/api/resource/1', {
-        method: 'PATCH', // Specify that this is a PATCH request.
-        headers: {
-          'Content-Type': 'application/json' // Indicate that the request body is in JSON format.
-        },
-        body: JSON.stringify({ // Convert the partial data update into a JSON string.
-          key1: 'updatedValue1'
-        })
-      });
-      
-      // Check if the response is not OK (status code not in the range 200-299).
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      
-      // Convert the response to JSON format.
-      const data = await response.json();
-      
-      // Log the server's response to the console.
-      console.log(data);
-    } catch (error) {
-      // Handle any errors that occur during the fetch operation.
-      console.error('There was a problem with the fetch operation:', error);
-    }
-  }
-  
-  // Call the patchData function to execute the PATCH request.
-  patchData();
-   
+patchData(); // Call the patchData function to execute the PATCH request.
 
 
 // DELETE REQUEST (DELETE/REMOVE) ****************************************************************************************************
 
-async function deleteData() {
-    try {
-      const response = await fetch('https://example.com/api/resource/1', {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        }
+async function deleteData() { // Declare an asynchronous function named deleteData.
+  try { // Begin a try block to handle potential errors.
+      const response = await fetch('https://example.com/api/resource/1', { // Send a DELETE request to the specified URL with options.
+          method: 'DELETE', // Specify that this is a DELETE request.
+          headers: {
+              'Content-Type': 'application/json' // Indicate that the request body is in JSON format (optional for DELETE).
+          }
       });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+      if (!response.ok) { // Check if the response status code is not in the range 200-299.
+          throw new Error('Network response was not ok'); // If not OK, throw an error with a descriptive message.
       }
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-    }
+      console.log('Resource deleted successfully'); // Log a success message to the console.
+  } catch (error) { // Catch any errors that occur during the fetch operation.
+      console.error('There was a problem with the fetch operation:', error); // Log the error message to the console.
   }
-  
-  deleteData();
+}
+
+deleteData(); // Call the deleteData function to execute the DELETE request.
 
 
-  async function deleteData() {
-    try {
-      // Send a DELETE request to the specified URL with the specified options.
-      const response = await fetch('https://example.com/api/resource/1', {
-        method: 'DELETE', // Specify that this is a DELETE request.
-        headers: {
-          'Content-Type': 'application/json' // Indicate that the request body is in JSON format (optional for DELETE).
-        }
-      });
-      
-      // Check if the response is not OK (status code not in the range 200-299).
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      
-      // Log a success message.
-      console.log('Resource deleted successfully');
-    } catch (error) {
-      // Handle any errors that occur during the fetch operation.
-      console.error('There was a problem with the fetch operation:', error);
-    }
-  }
-  
-  // Call the deleteData function to execute the DELETE request.
-  deleteData();
-   
-
-  
 // HEAD REQUEST (HEADERS ONLY) ****************************************************************************************************
 
-async function headRequest() {
-    try {
-      const response = await fetch('https://example.com/api/resource', {
-        method: 'HEAD'
+async function headRequest() { // Declare an asynchronous function named headRequest.
+  try { // Begin a try block to handle potential errors.
+      const response = await fetch('https://example.com/api/resource', { // Send a HEAD request to the specified URL.
+          method: 'HEAD' // Specify that this is a HEAD request.
       });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+      if (!response.ok) { // Check if the response status code is not in the range 200-299.
+          throw new Error('Network response was not ok'); // If not OK, throw an error with a descriptive message.
       }
-      console.log(response.headers);
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-    }
+      console.log(response.headers); // Log the headers from the response to the console.
+  } catch (error) { // Catch any errors that occur during the fetch operation.
+      console.error('There was a problem with the fetch operation:', error); // Log the error message to the console.
   }
-  
-  headRequest();
+}
 
+headRequest(); // Call the headRequest function to execute the HEAD request.
 
-  async function headRequest() {
-    try {
-      // Send a HEAD request to the specified URL.
-      const response = await fetch('https://example.com/api/resource', {
-        method: 'HEAD' // Specify that this is a HEAD request.
-      });
-      
-      // Check if the response is not OK (status code not in the range 200-299).
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      
-      // Log the headers from the response.
-      console.log(response.headers);
-    } catch (error) {
-      // Handle any errors that occur during the fetch operation.
-      console.error('There was a problem with the fetch operation:', error);
-    }
-  }
-  
-  // Call the headRequest function to execute the HEAD request.
-  headRequest();
-   
 
 // OPTIONS REQUEST (OPTIONS RETURN LIKE IN POSTMAN TO SEE WHAT REQUESTS YOU ARE ALLOWED TO MAKE) ****************************************************************************************************
 
-async function optionsRequest() {
-    try {
-      const response = await fetch('https://example.com/api/resource', {
-        method: 'OPTIONS'
+async function optionsRequest() { // Declare an asynchronous function named optionsRequest.
+  try { // Begin a try block to handle potential errors.
+      const response = await fetch('https://example.com/api/resource', { // Send an OPTIONS request to the specified URL.
+          method: 'OPTIONS' // Specify that this is an OPTIONS request.
       });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+      if (!response.ok) { // Check if the response status code is not in the range 200-299.
+          throw new Error('Network response was not ok'); // If not OK, throw an error with a descriptive message.
       }
-      console.log(response.headers);
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-    }
+      console.log(response.headers.get('Allow')); // Log the allowed HTTP methods from the response headers to the console.
+  } catch (error) { // Catch any errors that occur during the fetch operation.
+      console.error('There was a problem with the fetch operation:', error); // Log the error message to the console.
   }
-  
-  optionsRequest();
+}
+
+optionsRequest(); // Call the optionsRequest function to execute the OPTIONS request.
 
 
-  async function optionsRequest() {
-    try {
-      // Send an OPTIONS request to the specified URL.
-      const response = await fetch('https://example.com/api/resource', {
-        method: 'OPTIONS' // Specify that this is an OPTIONS request.
-      });
-      
-      // Check if the response is not OK (status code not in the range 200-299).
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      
-      // Log the allowed HTTP methods from the response headers.
-      console.log(response.headers.get('Allow'));
-    } catch (error) {
-      // Handle any errors that occur during the fetch operation.
-      console.error('There was a problem with the fetch operation:', error);
-    }
-  }
-  
-  // Call the optionsRequest function to execute the OPTIONS request.
-  optionsRequest();
  
   
 
