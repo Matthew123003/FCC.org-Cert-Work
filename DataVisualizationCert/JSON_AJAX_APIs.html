@@ -1,5 +1,5 @@
 <!--*************************************************************************************************************************-->
-
+<!-- HANDLE CLICK EVENTS WITH JS USING ONCLICK PROPERTY -->
 <script>
     document.addEventListener('DOMContentLoaded', function(){
       // Add your code below this line
@@ -8,45 +8,9 @@
       // Add your code above this line
     });
 </script>
-  
-<style>
-    body {
-      text-align: center;
-      font-family: "Helvetica", sans-serif;
-    }
-    h1 {
-      font-size: 2em;
-      font-weight: bold;
-    }
-    .box {
-      border-radius: 5px;
-      background-color: #eee;
-      padding: 20px 5px;
-    }
-    button {
-      color: white;
-      background-color: #4791d0;
-      border-radius: 5px;
-      border: 1px solid #4791d0;
-      padding: 5px 10px 8px 10px;
-    }
-    button:hover {
-      background-color: #0F5897;
-      border: 1px solid #0F5897;
-    }
-</style>
-  <h1>Cat Photo Finder</h1>
-  <p class="message box">
-    The message will go here
-  </p>
-  <p>
-    <button id="getMessage">
-      Get Message
-    </button>
-  </p>
 
 <!--*************************************************************************************************************************-->
-
+<!-- CHANGE TEXT WITH CLICK EVENTS -->
 <script>
     document.addEventListener('DOMContentLoaded', function(){
       document.getElementById('getMessage').onclick = function(){
@@ -57,46 +21,27 @@
       }
     });
   </script>
-  
-  <style>
-    body {
-      text-align: center;
-      font-family: "Helvetica", sans-serif;
-    }
-    h1 {
-      font-size: 2em;
-      font-weight: bold;
-    }
-    .box {
-      border-radius: 5px;
-      background-color: #eee;
-      padding: 20px 5px;
-    }
-    button {
-      color: white;
-      background-color: #4791d0;
-      border-radius: 5px;
-      border: 1px solid #4791d0;
-      padding: 5px 10px 8px 10px;
-    }
-    button:hover {
-      background-color: #0F5897;
-      border: 1px solid #0F5897;
-    }
-  </style>
-  
-  <h1>Cat Photo Finder</h1>
-  <p class="message box">
-    The message will go here
-  </p>
-  <p>
-    <button id="getMessage">
-      Get Message
-    </button>
-  </p>
 
 <!--*************************************************************************************************************************-->
- 
+ <!-- GET JSON WITH THE JS XMLHTTPREQUEST METHOD-->
+
+ <script>
+        document.addEventListener('DOMContentLoaded', function(){
+        document.getElementById('getMessage').onclick = function(){
+        // Add your code below this line
+        const req = new XMLHttpRequest();
+        req.open("GET",'/json/cats.json',true);
+        req.send();
+        req.onload = function(){
+        const json = JSON.parse(req.responseText);
+        document.getElementsByClassName('message')[0].innerHTML = JSON.stringify(json);
+        };
+      };
+    });
+  </script>
+
+<!--*************************************************************************************************************************--> 
+<!-- GET JSON WITH THE JS FETCH METHOD-->
 <script>
     // Wait for the DOM to fully load before executing the script
     document.addEventListener('DOMContentLoaded', function() {
@@ -165,7 +110,7 @@
   </p>
 
 <!--*************************************************************************************************************************-->
-
+<!-- ACCESS JSON DATA FROM AN API -->
 <script>
     document.addEventListener('DOMContentLoaded', function(){
       document.getElementById('getMessage').onclick = function(){
@@ -176,7 +121,7 @@
           const json = JSON.parse(req.responseText);
           document.getElementsByClassName('message')[0].innerHTML = JSON.stringify(json);
           // Add your code below this line
-  console.log(json[2].codeNames[1]); 
+            console.log(json[2].codeNames[1]); 
           // Add your code above this line
         };
       };
@@ -184,4 +129,21 @@
   </script>
   
 <!--*************************************************************************************************************************-->
+<!-- CONVERT JSON DATA TO HTML -->
 
+<!--*************************************************************************************************************************-->
+<!-- RENDER IMAGES FROM DATA SOURCES -->
+
+<!--*************************************************************************************************************************-->
+<!-- PRE-FILTER JSON TO GET THE DATA YOU NEED -->
+
+<!--*************************************************************************************************************************-->
+<!-- GET GEOLOCATION DATA TO FIND USERS GPS COORDINATES -->
+
+<!--*************************************************************************************************************************-->
+<!-- POST DATA WITH THE JS XMLHTTPREQUEST METHOD -->
+
+<!--*************************************************************************************************************************-->
+
+
+<!--*************************************************************************************************************************-->
