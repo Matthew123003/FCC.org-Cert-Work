@@ -130,8 +130,23 @@
   
 <!--*************************************************************************************************************************-->
 <!-- CONVERT JSON DATA TO HTML -->
+<script>
+let html = ""; // Initialize an empty string to hold the HTML content
 
+json.forEach(function(val) { // Loop through each item in the json array
+  const keys = Object.keys(val); // Get the keys of the current object
 
+  html += "<div class='cat'>"; // Start a new div for each cat
+
+  keys.forEach(function(key) { // Loop through each key in the current object
+    html += "<strong>" + key + "</strong>: " + val[key] + "<br>"; // Add key name in strong tags and the corresponding value
+  });
+
+  html += "</div><br>"; // Close the div for the current cat and add a line break
+});
+
+document.getElementById("cat-container").innerHTML = html; // Set the innerHTML of the element with id "cat-container" to the generated HTML string
+</script>
 
 <!--*************************************************************************************************************************-->
 <!-- RENDER IMAGES FROM DATA SOURCES -->
