@@ -151,6 +151,28 @@ document.getElementById("cat-container").innerHTML = html; // Set the innerHTML 
 <!--*************************************************************************************************************************-->
 <!-- RENDER IMAGES FROM DATA SOURCES -->
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() { // Wait for the DOM to fully load before running the script
+      document.getElementById('getMessage').onclick = function() { // Add an event listener to the button with id 'getMessage'
+        const req = new XMLHttpRequest(); // Create a new XMLHttpRequest object
+        req.open("GET", '/json/cats.json', true); // Initialize a GET request to the specified URL
+        req.send(); // Send the request
+        req.onload = function() { // Define the function to run when the request is completed
+          const json = JSON.parse(req.responseText); // Parse the JSON response text into a JavaScript object
+          let html = ""; // Initialize an empty string to hold the HTML content
+          json.forEach(function(val) { // Loop through each item in the json array
+            html += "<div class='cat'>"; // Start a new div for each cat
+            // Add your code below this line
+            html += "<img src='" + val.imageLink + "' alt='" + val.altText + "'>"; // Add an img tag with the imageLink as src and altText as alt attribute
+            // Add your code above this line
+            html += "</div><br>"; // Close the div for the current cat and add a line break
+          });
+          document.getElementsByClassName('message')[0].innerHTML = html; // Set the innerHTML of the first element with class 'message' to the generated HTML string
+        };
+      };
+    });
+</script>
+  
 <!--*************************************************************************************************************************-->
 <!-- PRE-FILTER JSON TO GET THE DATA YOU NEED -->
 
