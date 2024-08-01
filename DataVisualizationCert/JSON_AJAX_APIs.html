@@ -221,7 +221,30 @@ document.getElementById("cat-container").innerHTML = html; // Set the innerHTML 
 <!--*************************************************************************************************************************-->
 <!-- POST DATA WITH THE JS XMLHTTPREQUEST METHOD -->
 
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() { // Wait for the DOM to fully load
+      document.getElementById('sendMessage').onclick = function() { // Add an event listener to the 'sendMessage' button
+  
+        const userName = document.getElementById('name').value; // Get the value of the input with id 'name'
+        const url = 'https://jsonplaceholder.typicode.com/posts'; // URL to send the POST request to
+        // Add your code below this line
+        const xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
+        xhr.open('POST', url, true); // Initialize a POST request to the specified URL
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8'); // Set the request header to indicate JSON data
+        xhr.onreadystatechange = function () { // Define a function to handle changes in the readyState of the request
+          if (xhr.readyState === 4 && xhr.status === 201) { // Check if the request is complete and the response status is 201 (Created)
+            const serverResponse = JSON.parse(xhr.response); // Parse the JSON response from the server
+            document.getElementsByClassName('message')[0].textContent = serverResponse.userName + serverResponse.suffix; // Update the content of the first element with class 'message' with the server response
+          }
+        };
+        const body = JSON.stringify({ userName: userName, suffix: ' loves cats!' }); // Create a JSON string from the userName and suffix
+        xhr.send(body); // Send the request with the JSON body
+  
+        // Add your code above this line
+      };
+    });
+</script>
+  
 <!--*************************************************************************************************************************-->
 
 
