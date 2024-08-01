@@ -22,15 +22,15 @@ scalability issues since threads are blocked while waiting for responses.
 **Example**:
 */
 function makeSynchronousRequest(url) {
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', url, false); // 'false' makes the request synchronous
-  xhr.send();
-  if (xhr.status === 200) {
-    console.log(xhr.responseText);
+  const xhr = new XMLHttpRequest(); // Creates a new XMLHttpRequest object for making HTTP requests
+  xhr.open('GET', url, false); // Configures the request to use the GET method, specifies the URL, and sets the request to be synchronous ('false' makes it synchronous)
+  xhr.send(); // Sends the request to the server
+  if (xhr.status === 200) { // Checks if the HTTP status code is 200 (OK)
+    console.log(xhr.responseText); // Logs the response text to the console if the request was successful
   }
 }
 
-makeSynchronousRequest('https://api.example.com/data');
+makeSynchronousRequest('https://api.example.com/data'); // Executes the synchronous request with the provided URL
 
 /*
 ### Asynchronous API Calls
@@ -49,43 +49,42 @@ makeSynchronousRequest('https://api.example.com/data');
 **Example Using Promises**:
 */
 function makeAsynchronousRequest(url) {
-  fetch(url)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+  fetch(url) // Initiates a fetch request to the provided URL
+    .then(response => { // Handles the response when it is received
+      if (!response.ok) { // Checks if the response status is not OK
+        throw new Error('Network response was not ok'); // Throws an error if the response was not OK
       }
-      return response.json();
+      return response.json(); // Parses the response body as JSON
     })
-    .then(data => {
-      console.log(data);
+    .then(data => { // Handles the parsed JSON data
+      console.log(data); // Logs the data to the console
     })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
+    .catch(error => { // Catches and handles any errors that occurred during the fetch operation
+      console.error('There was a problem with the fetch operation:', error); // Logs an error message if there was a problem with the fetch
     });
 }
 
-makeAsynchronousRequest('https://api.example.com/data');
+makeAsynchronousRequest('https://api.example.com/data'); // Executes the asynchronous request with the provided URL
 
 /*
 **Example Using async/await**:
-javascript
 */
 async function makeAsynchronousRequest(url) {
   try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+    const response = await fetch(url); // Waits for the fetch request to complete and retrieves the response
+    if (!response.ok) { // Checks if the response status is not OK
+      throw new Error('Network response was not ok'); // Throws an error if the response was not OK
     }
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.error('There was a problem with the fetch operation:', error);
+    const data = await response.json(); // Waits for the response body to be parsed as JSON
+    console.log(data); // Logs the data to the console
+  } catch (error) { // Catches and handles any errors that occurred during the fetch operation
+    console.error('There was a problem with the fetch operation:', error); // Logs an error message if there was a problem with the fetch
   }
 }
 
-makeAsynchronousRequest('https://api.example.com/data');
-/*
+makeAsynchronousRequest('https://api.example.com/data'); // Executes the asynchronous request with the provided URL
 
+/*
 ### Summary
 
 - **Synchronous API Calls**:
