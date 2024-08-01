@@ -206,8 +206,21 @@ document.getElementById("cat-container").innerHTML = html; // Set the innerHTML 
 <!--*************************************************************************************************************************-->
 <!-- GET GEOLOCATION DATA TO FIND USERS GPS COORDINATES -->
 
+<script>
+  if (navigator.geolocation) { // Check if the browser supports geolocation
+    navigator.geolocation.getCurrentPosition(function(position) { // Get the current position of the user
+      document.getElementById('data').innerHTML = "latitude: " + position.coords.latitude + "<br>longitude: " + position.coords.longitude; // Display the latitude and longitude in the element with id 'data'
+    });
+  }
+ </script>
+<h4>You are here:</h4>
+<div id="data">
+    <!-- This div will be populated with the latitude and longitude data -->
+</div>
+  
 <!--*************************************************************************************************************************-->
 <!-- POST DATA WITH THE JS XMLHTTPREQUEST METHOD -->
+
 
 <!--*************************************************************************************************************************-->
 
