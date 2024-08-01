@@ -97,4 +97,72 @@
 
 <!--*************************************************************************************************************************-->
  
- 
+<script>
+    // Wait for the DOM to fully load before executing the script
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add an event listener to the button with id 'getMessage'
+      document.getElementById('getMessage').onclick = () => {
+        // Fetch data from '/json/cats.json' when the button is clicked
+        fetch('/json/cats.json')
+          .then(response => response.json()) // Convert the response to JSON
+          .then(data => {
+            // Set the innerHTML of the element with id 'message' to the stringified JSON data
+            document.getElementById('message').innerHTML = JSON.stringify(data);
+          })
+          .catch(error => {
+            // Handle any errors that occur during the fetch operation
+            console.error('Error fetching data:', error);
+          });
+      };
+    });
+  </script>
+  
+  <style>
+    /* Style the body of the document */
+    body {
+      text-align: center; /* Center-align the text in the body */
+      font-family: "Helvetica", sans-serif; /* Set the font family to Helvetica, with a fallback to sans-serif */
+    }
+  
+    /* Style the h1 element */
+    h1 {
+      font-size: 2em; /* Set the font size to 2 em units */
+      font-weight: bold; /* Make the font weight bold */
+    }
+  
+    /* Style the p element with class 'box' */
+    .box {
+      border-radius: 5px; /* Round the corners of the element with a 5px radius */
+      background-color: #eee; /* Set the background color to a light gray */
+      padding: 20px 5px; /* Add 20px padding on top and bottom, and 5px padding on left and right */
+    }
+  
+    /* Style the button element */
+    button {
+      color: white; /* Set the text color to white */
+      background-color: #4791d0; /* Set the background color to a shade of blue */
+      border-radius: 5px; /* Round the corners of the button with a 5px radius */
+      border: 1px solid #4791d0; /* Add a border with the same color as the background */
+      padding: 5px 10px 8px 10px; /* Add padding with 5px on top, 10px on right and left, and 8px on bottom */
+    }
+  
+    /* Style the button on hover */
+    button:hover {
+      background-color: #0F5897; /* Change the background color to a darker blue on hover */
+      border: 1px solid #0F5897; /* Change the border color to match the new background color on hover */
+    }
+  </style>
+  
+  <h1>Cat Photo Finder</h1> <!-- Main title of the page -->
+  <p id="message" class="box">
+    The message will go here <!-- Placeholder text for where the fetched message will be displayed -->
+  </p>
+  <p>
+    <!-- Button to trigger the fetch operation -->
+    <button id="getMessage">
+      Get Message <!-- Text displayed on the button -->
+    </button>
+  </p>
+
+<!--*************************************************************************************************************************-->
+
