@@ -176,6 +176,33 @@ document.getElementById("cat-container").innerHTML = html; // Set the innerHTML 
 <!--*************************************************************************************************************************-->
 <!-- PRE-FILTER JSON TO GET THE DATA YOU NEED -->
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() { // Wait for the DOM to fully load before running the script
+      document.getElementById('getMessage').onclick = function() { // Add an event listener to the button with id 'getMessage'
+        const req = new XMLHttpRequest(); // Create a new XMLHttpRequest object
+        req.open("GET", '/json/cats.json', true); // Initialize a GET request to the specified URL
+        req.send(); // Send the request
+        req.onload = function() { // Define the function to run when the request is completed
+          let json = JSON.parse(req.responseText); // Parse the JSON response text into a JavaScript object
+          let html = ""; // Initialize an empty string to hold the HTML content
+          // Add your code below this line
+          json = json.filter(function(val) { // Filter out the object with id equal to 1 from the json array
+            return (val.id !== 1); // Keep objects where the id is not equal to 1
+          });
+  
+          // Add your code above this line
+          json.forEach(function(val) { // Loop through each remaining item in the json array
+            html += "<div class='cat'>"; // Start a new div for each cat
+            html += "<img src='" + val.imageLink + "' alt='" + val.altText + "'>"; // Add an img tag with the imageLink as src and altText as alt attribute
+            html += "</div>"; // Close the div for the current cat
+          });
+          document.getElementsByClassName('message')[0].innerHTML = html; // Set the innerHTML of the first element with class 'message' to the generated HTML string
+        };
+      };
+    });
+</script>
+  
+
 <!--*************************************************************************************************************************-->
 <!-- GET GEOLOCATION DATA TO FIND USERS GPS COORDINATES -->
 
