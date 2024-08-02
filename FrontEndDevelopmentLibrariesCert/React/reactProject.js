@@ -490,32 +490,33 @@ class MyComponent extends React.Component {
 
 /******************************************************************************/
 
-class MyComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: "Hello"
+class MyComponent extends React.Component { // Define a class component called MyComponent that extends React.Component
+  constructor(props) { // Define the constructor method for initializing state and props
+    super(props); // Call the constructor of the parent class (React.Component)
+    this.state = { // Initialize the state object
+      text: "Hello" // Set the initial state with a key 'text' and value 'Hello'
     };
     // Change code below this line
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this); // Bind the handleClick method to 'this' to ensure it has the correct context
     // Change code above this line
   }
-  handleClick() {
-    this.setState({
-      text: "You clicked!"
+  handleClick() { // Define a method to handle click events
+    this.setState({ // Use setState to update the component's state
+      text: "You clicked!" // Change the value of 'text' in the state to 'You clicked!'
     });
   }
-  render() {
-    return (
-      <div>
+  render() { // Define the render method to describe what the UI should look like
+    return ( // Return the JSX to render
+      <div> // Create a div element
         { /* Change code below this line */ }
-        <button onClick={this.handleClick}>Click Me</button>
+        <button onClick={this.handleClick}>Click Me</button> // Create a button element with an onClick event handler that calls handleClick
         { /* Change code above this line */ }
-        <h1>{this.state.text}</h1>
+        <h1>{this.state.text}</h1> // Create an h1 element that displays the current state of 'text'
       </div>
     );
   }
 };
+
 
 /******************************************************************************/
 
