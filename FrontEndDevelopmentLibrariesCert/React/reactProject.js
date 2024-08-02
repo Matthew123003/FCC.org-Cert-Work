@@ -288,7 +288,7 @@ const JSX1 = (
 
 /******************************************************************************/
 
-  const ShoppingCart = (props) => {
+  const ShoppingCart = (props) => { // Shopping Cart is the function name, props is parameter function ShoppingCart(props){};
     return (
       <div>
         <h1>Shopping Cart Component</h1>
@@ -520,6 +520,40 @@ class MyComponent extends React.Component { // Define a class component called M
 
 /***************************************************************************************************************************/
 
+class MyComponent extends React.Component { // Define a class component called MyComponent that extends React.Component
+  constructor(props) { // Define the constructor method for initializing state and props
+    super(props); // Call the constructor of the parent class (React.Component)
+    this.state = { // Initialize the state object
+      visibility: false // Set the initial state with a key 'visibility' and value 'false'
+    };
+    // Change code below this line
+    this.toggleVisibility = this.toggleVisibility.bind(this); // Bind the toggleVisibility method to 'this' to ensure it has the correct context
+    // Change code above this line
+  }
+
+  // Change code below this line
+  toggleVisibility() { // Define a method to toggle the visibility state
+    this.setState(state => ({ visibility: !state.visibility })); // Use setState with an anonymous function to toggle the visibility property
+  }
+  // Change code above this line
+  
+  render() { // Define the render method to describe what the UI should look like
+    if (this.state.visibility) { // Check if visibility state is true
+      return ( // Return the JSX to render if visibility is true
+        <div> // Create a div element
+          <button onClick={this.toggleVisibility}>Click Me</button> // Create a button element with an onClick event handler that calls toggleVisibility
+          <h1>Now you see me!</h1> // Conditionally render an h1 element if visibility is true
+        </div>
+      );
+    } else { // If visibility is false
+      return ( // Return the JSX to render if visibility is false
+        <div> // Create a div element
+          <button onClick={this.toggleVisibility}>Click Me</button> // Create a button element with an onClick event handler that calls toggleVisibility
+        </div>
+      );
+    }
+  }
+}
 
 
 /***************************************************************************************************************************/
