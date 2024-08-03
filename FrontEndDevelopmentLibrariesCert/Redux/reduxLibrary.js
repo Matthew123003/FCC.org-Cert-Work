@@ -280,10 +280,64 @@ Another method you have access to on the Redux store object is store.subscribe()
 /***************************************************************************************************************************/
 // COMBINE MULTIPLE REDUCERS
 
+const INCREMENT = 'INCREMENT';
+const DECREMENT = 'DECREMENT';
+
+const counterReducer = (state = 0, action) => {
+  switch(action.type) {
+    case INCREMENT:
+      return state + 1;
+    case DECREMENT:
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
+
+const authReducer = (state = {authenticated: false}, action) => {
+  switch(action.type) {
+    case LOGIN:
+      return {
+        authenticated: true
+      };
+    case LOGOUT:
+      return {
+        authenticated: false
+      };
+    default:
+      return state;
+  }
+};
+
+// Combine the reducers into a root reducer
+const rootReducer = Redux.combineReducers({
+  count: counterReducer, // Assign counterReducer to the 'count' key
+  auth: authReducer // Assign authReducer to the 'auth' key
+});
+
+const store = Redux.createStore(rootReducer);
+
+// Testing the store and reducers
+store.dispatch({ type: INCREMENT });
+console.log(store.getState()); // { count: 1, auth: { authenticated: false } }
+
+store.dispatch({ type: LOGIN });
+console.log(store.getState()); // { count: 1, auth: { authenticated: true } }
+
+store.dispatch({ type: DECREMENT });
+console.log(store.getState()); // { count: 0, auth: { authenticated: true } }
+
+store.dispatch({ type: LOGOUT });
+console.log(store.getState()); // { count: 0, auth: { authenticated: false } }
 
 
 /***************************************************************************************************************************/
 // SEND ACTION DATA TO THE STORE
+
+
 
 /***************************************************************************************************************************/
 // USE MIDDLEWARE TO HANDLE ASYNCHROUS ACTIONS
