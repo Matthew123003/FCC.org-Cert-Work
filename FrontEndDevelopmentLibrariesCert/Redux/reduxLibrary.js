@@ -280,67 +280,101 @@ Another method you have access to on the Redux store object is store.subscribe()
 /***************************************************************************************************************************/
 // COMBINE MULTIPLE REDUCERS
 
-const INCREMENT = 'INCREMENT';
-const DECREMENT = 'DECREMENT';
+const INCREMENT = 'INCREMENT'; // Define a constant for the action type INCREMENT
+const DECREMENT = 'DECREMENT'; // Define a constant for the action type DECREMENT
 
-const counterReducer = (state = 0, action) => {
-  switch(action.type) {
-    case INCREMENT:
-      return state + 1;
-    case DECREMENT:
-      return state - 1;
-    default:
-      return state;
+// Reducer function to handle state changes for the counter
+const counterReducer = (state = 0, action) => { 
+  switch(action.type) { // Switch statement to handle different action types
+    case INCREMENT: // If the action type is INCREMENT
+      return state + 1; // Increment the state by 1 and return the new state
+    case DECREMENT: // If the action type is DECREMENT
+      return state - 1; // Decrement the state by 1 and return the new state
+    default: // Default case when action type does not match any cases
+      return state; // Return the current state unchanged
   }
 };
 
-const LOGIN = 'LOGIN';
-const LOGOUT = 'LOGOUT';
+const LOGIN = 'LOGIN'; // Define a constant for the action type LOGIN
+const LOGOUT = 'LOGOUT'; // Define a constant for the action type LOGOUT
 
-const authReducer = (state = {authenticated: false}, action) => {
-  switch(action.type) {
-    case LOGIN:
-      return {
-        authenticated: true
+// Reducer function to handle state changes for authentication
+const authReducer = (state = {authenticated: false}, action) => { 
+  switch(action.type) { // Switch statement to handle different action types
+    case LOGIN: // If the action type is LOGIN
+      return { 
+        authenticated: true // Set the authenticated state to true
       };
-    case LOGOUT:
+    case LOGOUT: // If the action type is LOGOUT
       return {
-        authenticated: false
+        authenticated: false // Set the authenticated state to false
       };
-    default:
-      return state;
+    default: // Default case when action type does not match any cases
+      return state; // Return the current state unchanged
   }
 };
 
 // Combine the reducers into a root reducer
 const rootReducer = Redux.combineReducers({
-  count: counterReducer, // Assign counterReducer to the 'count' key
-  auth: authReducer // Assign authReducer to the 'auth' key
+  count: counterReducer, // Assign counterReducer to the 'count' key in the combined reducer
+  auth: authReducer // Assign authReducer to the 'auth' key in the combined reducer
 });
 
-const store = Redux.createStore(rootReducer);
+const store = Redux.createStore(rootReducer); // Create a Redux store using the rootReducer
 
 // Testing the store and reducers
-store.dispatch({ type: INCREMENT });
-console.log(store.getState()); // { count: 1, auth: { authenticated: false } }
+store.dispatch({ type: INCREMENT }); // Dispatch an INCREMENT action
+console.log(store.getState()); // Log the updated state, which should be { count: 1, auth: { authenticated: false } }
 
-store.dispatch({ type: LOGIN });
-console.log(store.getState()); // { count: 1, auth: { authenticated: true } }
+store.dispatch({ type: LOGIN }); // Dispatch a LOGIN action
+console.log(store.getState()); // Log the updated state, which should be { count: 1, auth: { authenticated: true } }
 
-store.dispatch({ type: DECREMENT });
-console.log(store.getState()); // { count: 0, auth: { authenticated: true } }
+store.dispatch({ type: DECREMENT }); // Dispatch a DECREMENT action
+console.log(store.getState()); // Log the updated state, which should be { count: 0, auth: { authenticated: true } }
 
-store.dispatch({ type: LOGOUT });
-console.log(store.getState()); // { count: 0, auth: { authenticated: false } }
+store.dispatch({ type: LOGOUT }); // Dispatch a LOGOUT action
+console.log(store.getState()); // Log the updated state, which should be { count: 0, auth: { authenticated: false } }
+
 
 
 /***************************************************************************************************************************/
 // SEND ACTION DATA TO THE STORE
 
+const ADD_NOTE = 'ADD_NOTE'; // Define a constant for the action type
+
+// Reducer function to handle note-related actions
+const notesReducer = (state = 'Initial State', action) => { 
+  switch(action.type) { // Switch statement to handle different action types
+    // Change code below this line
+    case ADD_NOTE: // If the action type is 'ADD_NOTE'
+      return action.text; // Return the text property from the action as the new state
+    // Change code above this line
+    default: // Default case when action type does not match any cases
+      return state; // Return the current state unchanged
+  }
+};
+
+// Action creator function to create an action to add a note
+const addNoteText = (note) => { 
+  // Change code below this line
+  return { // Return an action object
+    type: ADD_NOTE, // The action type is 'ADD_NOTE'
+    text: note // The text property is set to the passed in note
+  };
+  // Change code above this line
+};
+
+const store = Redux.createStore(notesReducer); // Create a Redux store using the notesReducer
+
+console.log(store.getState()); // Log the initial state of the store
+store.dispatch(addNoteText('Hello!')); // Dispatch an action to add a note with the text 'Hello!'
+console.log(store.getState()); // Log the updated state of the store
 
 
 /***************************************************************************************************************************/
 // USE MIDDLEWARE TO HANDLE ASYNCHROUS ACTIONS
+
+
 
 /***************************************************************************************************************************/
 // WRITE A COUNTER WITH REDUX
