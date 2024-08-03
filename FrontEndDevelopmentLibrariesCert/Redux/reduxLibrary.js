@@ -237,10 +237,50 @@ const logoutUser = () => { // Define an action creator function for logout
 /***************************************************************************************************************************/
 //REGISTER A STORE LISTENER
 
+const ADD = 'ADD'; // Define action type 'ADD'
 
+const reducer = (state = 0, action) => { // Reducer function that handles state changes
+  switch(action.type) { // Switch statement to handle different action types
+    case ADD: // Case for 'ADD' action type
+      return state + 1; // Increment state by 1
+    default: // Default case if action type does not match any cases
+      return state; // Return current state unchanged
+  }
+};
+
+const store = Redux.createStore(reducer); // Create a Redux store with the reducer function
+
+// Global count variable:
+let count = 0; // Initialize global variable count to 0
+
+// Change code below this line
+const incrementCount = () => { // Define a callback function to increment count
+  count += 1; // Increment the global variable count by 1
+};
+
+store.subscribe(incrementCount); // Pass the incrementCount function to store.subscribe()
+// Change code above this line
+
+store.dispatch({type: ADD}); // Dispatch an 'ADD' action
+console.log(count); // Log the current value of count
+
+store.dispatch({type: ADD}); // Dispatch another 'ADD' action
+console.log(count); // Log the current value of count
+
+store.dispatch({type: ADD}); // Dispatch another 'ADD' action
+console.log(count); // Log the current value of count
+
+/*
+Another method you have access to on the Redux store object is store.subscribe(). This allows you to subscribe
+ listener functions to the store, which are called whenever an action is dispatched against the store. One simple
+  use for this method is to subscribe a function to your store that simply logs a message every time an action is
+   received and the store is updated.
+*/
 
 /***************************************************************************************************************************/
 // COMBINE MULTIPLE REDUCERS
+
+
 
 /***************************************************************************************************************************/
 // SEND ACTION DATA TO THE STORE
