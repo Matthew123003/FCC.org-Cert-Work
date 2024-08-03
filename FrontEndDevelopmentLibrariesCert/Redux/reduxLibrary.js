@@ -149,10 +149,53 @@ Another key principle in Redux is that state is read-only. In other words, the r
 /***************************************************************************************************************************/
 // USE SWITCH STATEMENT TO HANDLE MULTIPLE ACTIONS
 
+const defaultState = { // Define the default initial state object
+    authenticated: false // Initial state property 'authenticated' set to false
+  };
+  
+  const authReducer = (state = defaultState, action) => { // Reducer function that takes current state and an action
+    // Change code below this line
+    switch(action.type) { // Switch statement to handle different action types
+      case 'LOGIN': // Case for 'LOGIN' action type
+        return { // Return a new state object
+          authenticated: true // Set the 'authenticated' property to true
+        };
+      case 'LOGOUT': // Case for 'LOGOUT' action type
+        return { // Return a new state object
+          authenticated: false // Set the 'authenticated' property to false
+        };
+      default: // Default case if the action type does not match any cases
+        return state; // Return the current state unchanged
+    }
+    // Change code above this line
+  };
+  
+  const store = Redux.createStore(authReducer); // Create a Redux store with the authReducer function
+  
+  const loginUser = () => { // Define an action creator function for login
+    return { // Return an action object
+      type: 'LOGIN' // Action type set to 'LOGIN'
+    }
+  };
+  
+  const logoutUser = () => { // Define an action creator function for logout
+    return { // Return an action object
+      type: 'LOGOUT' // Action type set to 'LOGOUT'
+    }
+  };
+  
 
+/*
+You can tell the Redux store how to handle multiple action types. Say you are managing user authentication in your
+ Redux store. You want to have a state representation for when users are logged in and when they are logged out. You 
+ represent this with a single state object with the property authenticated. You also need action creators that create
+  actions corresponding to user login and user logout, along with the action objects themselves.
+*/
 
 /***************************************************************************************************************************/
 // USE CONST FOR ACTION TYPES
+
+
 
 /***************************************************************************************************************************/
 //REGISTER A STORE LISTENER
