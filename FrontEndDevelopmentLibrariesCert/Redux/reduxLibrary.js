@@ -195,10 +195,49 @@ You can tell the Redux store how to handle multiple action types. Say you are ma
 /***************************************************************************************************************************/
 // USE CONST FOR ACTION TYPES
 
+const LOGIN = 'LOGIN'; // Define a constant for the 'LOGIN' action type
+const LOGOUT = 'LOGOUT'; // Define a constant for the 'LOGOUT' action type
+
+const defaultState = { // Define the default initial state object
+  authenticated: false // Initial state property 'authenticated' set to false
+};
+
+const authReducer = (state = defaultState, action) => { // Reducer function that takes current state and an action
+
+  switch (action.type) { // Switch statement to handle different action types
+    case LOGIN: // Case for 'LOGIN' action type
+      return { // Return a new state object
+        authenticated: true // Set the 'authenticated' property to true
+      }
+    case LOGOUT: // Case for 'LOGOUT' action type
+      return { // Return a new state object
+        authenticated: false // Set the 'authenticated' property to false
+      }
+    default: // Default case if the action type does not match any cases
+      return state; // Return the current state unchanged
+  }
+
+};
+
+const store = Redux.createStore(authReducer); // Create a Redux store with the authReducer function
+
+const loginUser = () => { // Define an action creator function for login
+  return { // Return an action object
+    type: LOGIN // Action type set to 'LOGIN'
+  }
+};
+
+const logoutUser = () => { // Define an action creator function for logout
+  return { // Return an action object
+    type: LOGOUT // Action type set to 'LOGOUT'
+  }
+};
 
 
 /***************************************************************************************************************************/
 //REGISTER A STORE LISTENER
+
+
 
 /***************************************************************************************************************************/
 // COMBINE MULTIPLE REDUCERS
