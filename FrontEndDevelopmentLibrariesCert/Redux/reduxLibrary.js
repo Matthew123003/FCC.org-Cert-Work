@@ -374,10 +374,99 @@ console.log(store.getState()); // Log the updated state of the store
 /***************************************************************************************************************************/
 // USE MIDDLEWARE TO HANDLE ASYNCHROUS ACTIONS
 
+const REQUESTING_DATA = 'REQUESTING_DATA'; // Define a constant for the action type when requesting data
+const RECEIVED_DATA = 'RECEIVED_DATA'; // Define a constant for the action type when data is received
 
+// Action creator for requesting data
+const requestingData = () => {
+  return {
+    type: REQUESTING_DATA // Return an action object with type REQUESTING_DATA
+  };
+};
+
+// Action creator for received data
+const receivedData = (data) => {
+  return {
+    type: RECEIVED_DATA, // Return an action object with type RECEIVED_DATA
+    users: data.users // Include the data's users array in the action object
+  };
+};
+
+// Async action creator to handle async operations
+const handleAsync = () => {
+  return function(dispatch) {
+    // Dispatch request action here
+    dispatch(requestingData());
+
+    // Simulate an async operation with a timeout
+    setTimeout(function() {
+      let data = {
+        users: ['Jeff', 'William', 'Alice'] // Data to be received after the timeout
+      };
+
+      // Dispatch received data action here with the data
+      dispatch(receivedData(data));
+    }, 2500);
+  };
+};
+
+const defaultState = {
+  fetching: false, // Initial state for fetching status
+  users: [] // Initial state for users list
+};
+
+// Reducer to handle async data actions
+const asyncDataReducer = (state = defaultState, action) => {
+  switch(action.type) {
+    case REQUESTING_DATA: // Handle requesting data action
+      return {
+        fetching: true, // Set fetching to true
+        users: [] // Clear users list
+      };
+    case RECEIVED_DATA: // Handle received data action
+      return {
+        fetching: false, // Set fetching to false
+        users: action.users // Update users list with received data
+      };
+    default: // Default case
+      return state; // Return current state
+  }
+};
+
+// Create Redux store with thunk middleware
+const store = Redux.createStore(
+  asyncDataReducer,
+  Redux.applyMiddleware(ReduxThunk.default)
+);
+
+// Test the async action
+store.dispatch(handleAsync());
+store.subscribe(() => console.log(store.getState())); // Subscribe to store changes and log the state
+
+/*
+So far these challenges have avoided discussing asynchronous actions, but they are an unavoidable part of web development.
+ At some point you'll need to call asynchronous endpoints in your Redux app, so how do you handle these types of requests?
+  Redux provides middleware designed specifically for this purpose, called Redux Thunk middleware. Here's a brief description 
+  how to use this with Redux.
+
+To include Redux Thunk middleware, you pass it as an argument to Redux.applyMiddleware(). This statement is then provided 
+as a second optional parameter to the createStore() function. Take a look at the code at the bottom of the editor to see 
+this. Then, to create an asynchronous action, you return a function in the action creator that takes dispatch as an argument.
+ Within this function, you can dispatch actions and perform asynchronous requests.
+
+In this example, an asynchronous request is simulated with a setTimeout() call. It's common to dispatch an action before 
+initiating any asynchronous behavior so that your application state knows that some data is being requested (this state 
+could display a loading icon, for instance). Then, once you receive the data, you dispatch another action which carries 
+the data as a payload along with information that the action is completed.
+
+Remember that you're passing dispatch as a parameter to this special action creator. This is what you'll use to dispatch
+ your actions, you simply pass the action directly to dispatch and the middleware takes care of the rest.
+*/
 
 /***************************************************************************************************************************/
 // WRITE A COUNTER WITH REDUX
+
+
 
 /***************************************************************************************************************************/
 // NEVER MUTATE STATE
