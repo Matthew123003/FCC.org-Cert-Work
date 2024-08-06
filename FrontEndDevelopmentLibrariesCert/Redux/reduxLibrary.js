@@ -611,7 +611,45 @@ const immutableReducer = (state = [0,1,2,3,4,5], action) => {
 /***************************************************************************************************************************/
 // COPY AN OBJECT WITH OBJECT.ASSIGN
 
+const defaultState = {
+    user: 'CamperBot',
+    status: 'offline',
+    friends: '732,982',
+    community: 'freeCodeCamp'
+  };
+  
+  const immutableReducer = (state = defaultState, action) => {
+    switch(action.type) {
+      case 'ONLINE':
+        // Don't mutate state here; create a new state object with updated status
+        return Object.assign({}, state, { status: 'online' });
+        // Object.assign() creates a new object by copying properties from the state object and overwriting the status property with 'online'
+  
+      default:
+        return state; // Return the current state if action type doesn't match
+    }
+  };
+  
+  const wakeUp = () => {
+    return {
+      type: 'ONLINE' // Action type to be handled by the reducer
+    }
+  };
+  
+  const store = Redux.createStore(immutableReducer);
+  // Create the Redux store with the immutableReducer
+  
+/*
+The last several challenges worked with arrays, but there are ways to help enforce state immutability when state is
+ an object, too. A useful tool for handling objects is the Object.assign() utility. Object.assign() takes a target 
+ object and source objects and maps properties from the source objects to the target object. Any matching properties
+  are overwritten by properties in the source objects. This behavior is commonly used to make shallow copies of objects
+   by passing an empty object as the first argument followed by the object(s) you want to copy. Here's an example:
 
+const newObject = Object.assign({}, obj1, obj2);
+
+This creates newObject as a new object, which contains the properties that currently exist in obj1 and obj2.
+*/
 
 /***************************************************************************************************************************/
 
