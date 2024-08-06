@@ -1,25 +1,36 @@
-When using JHipster with Spring Boot and SQL databases, you often rely on Liquibase for managing database schema changes and migrations. Here’s why you needed to modify Liquibase files and what that entails:
+When using JHipster with Spring Boot and SQL databases, you often rely on Liquibase for managing database schema 
+changes and migrations. Here’s why you needed to modify Liquibase files and what that entails:
 
 ### **Understanding Liquibase and JHipster**
 
 1. **Liquibase Overview:**
-   - **Liquibase** is a database schema change management tool that helps you manage and apply incremental changes to your database schema. It uses changelog files, typically written in XML, YAML, JSON, or SQL, to describe the changes.
+   - **Liquibase** is a database schema change management tool that helps you manage and apply incremental changes
+    to your database schema. It uses changelog files, typically written in XML, YAML, JSON, or SQL, to describe
+     the changes.
 
 2. **JHipster Integration:**
-   - JHipster uses Liquibase to handle database migrations. When you generate a new JHipster project, it sets up Liquibase with an initial changelog file that represents the schema at the point of project generation.
+   - JHipster uses Liquibase to handle database migrations. When you generate a new JHipster project, it sets 
+   up Liquibase with an initial changelog file that represents the schema at the point of project generation.
 
 ### **Why Modify Liquibase Files**
 
 1. **Custom Endpoints and Schema Changes:**
-   - When you add custom endpoints to generate new tables or modify existing ones, these changes need to be reflected in the database schema. While Spring Boot and JHipster handle the application logic and endpoints, Liquibase is responsible for ensuring the database schema is updated to match these changes.
+   - When you add custom endpoints to generate new tables or modify existing ones, these changes need to be
+    reflected in the database schema. While Spring Boot and JHipster handle the application logic and endpoints,
+     Liquibase is responsible for ensuring the database schema is updated to match these changes.
 
 2. **Changelog Files:**
-   - To keep the database schema in sync with your application changes, you need to create or update Liquibase changelog files. This involves:
-     - **Creating New Changelogs:** For each new table or significant change, you create a new Liquibase changelog file or add changesets to an existing file. These changesets describe the SQL operations needed to apply the schema changes.
-     - **Updating Existing Changelogs:** If you modify existing tables or add constraints, you need to add or update changesets in the Liquibase changelog to reflect these changes.
+   - To keep the database schema in sync with your application changes, you need to create or update Liquibase 
+   changelog files. This involves:
+     - **Creating New Changelogs:** For each new table or significant change, you create a new Liquibase changelog
+      file or add changesets to an existing file. These changesets describe the SQL operations needed to apply
+       the schema changes.
+     - **Updating Existing Changelogs:** If you modify existing tables or add constraints, you need to add or
+      update changesets in the Liquibase changelog to reflect these changes.
 
 3. **Database Migration:**
-   - Liquibase manages database migrations through these changelog files. When you run your application or execute Liquibase commands, it applies the changes described in these files to the database.
+   - Liquibase manages database migrations through these changelog files. When you run your application or 
+   execute Liquibase commands, it applies the changes described in these files to the database.
 
 ### **Steps to Modify Liquibase Files**
 
@@ -28,16 +39,18 @@ When using JHipster with Spring Boot and SQL databases, you often rely on Liquib
    - Define the changesets for creating new tables or modifying existing ones.
 
 2. **Update the Master Changelog:**
-   - Update the master changelog file (usually named `db.changelog-master.xml` or similar) to include references to your new changelog files.
+   - Update the master changelog file (usually named `db.changelog-master.xml` or similar) to include references 
+   to your new changelog files.
 
 3. **Define Changesets:**
-   - Write changesets in your changelog files to describe the SQL operations needed, such as `createTable`, `addColumn`, `dropTable`, etc.
+   - Write changesets in your changelog files to describe the SQL operations needed, such as `createTable`, 
+   `addColumn`, `dropTable`, etc.
 
 ### **Example of a Liquibase Changeset**
 
 Here’s an example of a changeset in XML format to create a new table:
 
-```xml
+```XML FORMAT
 <changeSet id="1" author="yourname">
     <createTable tableName="new_table">
         <column name="id" type="BIGINT">
@@ -52,6 +65,6 @@ Here’s an example of a changeset in XML format to create a new table:
 
 ### **Summary**
 
-In essence, Liquibase ensures that your database schema evolves in sync with your application. Whenever you make changes to the schema (e.g., adding tables or columns), you need to update the Liquibase changelog files so that these changes can be applied to the database.
-
-If you have more specific questions about Liquibase configurations or how to handle complex migrations, feel free to ask!
+In essence, Liquibase ensures that your database schema evolves in sync with your application. Whenever you make
+ changes to the schema (e.g., adding tables or columns), you need to update the Liquibase changelog files so that
+  these changes can be applied to the database.
