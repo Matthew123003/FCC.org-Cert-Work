@@ -466,10 +466,39 @@ Remember that you're passing dispatch as a parameter to this special action crea
 /***************************************************************************************************************************/
 // WRITE A COUNTER WITH REDUX
 
+const INCREMENT = 'INCREMENT'; // Define a constant for the increment action type to avoid typos and make code easier to maintain
+const DECREMENT = 'DECREMENT'; // Define a constant for the decrement action type to avoid typos and make code easier to maintain
+
+// Define the counter reducer which will handle increment and decrement actions
+const counterReducer = (state = 0, action) => { // Initialize the reducer with default state as 0 and define how state changes based on actions
+  switch(action.type) { // Switch over the action type to determine how to update the state
+    case INCREMENT: // If the action type is INCREMENT
+      return state + 1; // Increment the state by 1
+    case DECREMENT: // If the action type is DECREMENT
+      return state - 1; // Decrement the state by 1
+    default: // If the action type is not recognized
+      return state; // Return the current state unchanged
+  }
+}; // End of the reducer function
+
+// Define an action creator for incrementing
+const incAction = () => { 
+  return { type: INCREMENT }; // Return an action object with the type set to INCREMENT
+}; // End of increment action creator function
+
+// Define an action creator for decrementing
+const decAction = () => { 
+  return { type: DECREMENT }; // Return an action object with the type set to DECREMENT
+}; // End of decrement action creator function
+
+// Define the Redux store here, passing in your reducers
+const store = Redux.createStore(counterReducer); // Create a Redux store using the counterReducer to manage state updates
 
 
 /***************************************************************************************************************************/
 // NEVER MUTATE STATE
+
+
 
 /***************************************************************************************************************************/
 // USE SPREAD OPERATOR ON ARRAYS
