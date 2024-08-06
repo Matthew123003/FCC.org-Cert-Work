@@ -585,10 +585,33 @@ const immutableReducer = (state = ['Do not mutate state!'], action) => {
 /***************************************************************************************************************************/
 // REMOVE AN ITEM FROM AN ARRAY
 
-
+const immutableReducer = (state = [0,1,2,3,4,5], action) => {
+    switch(action.type) {
+      case 'REMOVE_ITEM':
+        // Don't mutate state here; create a new array with the item at action.index removed
+        return state.filter((_, index) => index !== action.index);
+        // Use filter to create a new array excluding the item at action.index
+        
+      default:
+        return state; // Return the current state if action type doesn't match
+    }
+  };
+  
+  const removeItem = (index) => {
+    return {
+      type: 'REMOVE_ITEM', // Action type to be handled by the reducer
+      index // Index of the item to be removed
+    }
+  }
+  
+  const store = Redux.createStore(immutableReducer); 
+  // Create the Redux store with the immutableReducer
+  
 
 /***************************************************************************************************************************/
 // COPY AN OBJECT WITH OBJECT.ASSIGN
+
+
 
 /***************************************************************************************************************************/
 
