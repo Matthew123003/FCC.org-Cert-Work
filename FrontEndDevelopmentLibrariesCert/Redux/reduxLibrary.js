@@ -498,7 +498,57 @@ const store = Redux.createStore(counterReducer); // Create a Redux store using t
 /***************************************************************************************************************************/
 // NEVER MUTATE STATE
 
+const ADD_TO_DO = 'ADD_TO_DO';
 
+// A list of strings representing tasks to do:
+const todos = [
+  'Go to the store',
+  'Clean the house',
+  'Cook dinner',
+  'Learn to code',
+];
+
+// Define the reducer to handle actions and update state
+const immutableReducer = (state = todos, action) => {
+  switch(action.type) {
+    case ADD_TO_DO:
+      // Create a new array with the existing todos and the new todo item
+      return [
+        ...state, // Spread the existing items in the state array
+        action.todo // Append the new todo item from the action
+      ];
+    default:
+      return state; // Return the current state if the action type is not matched
+  }
+};
+
+// Define the action creator to add a new to-do item
+const addToDo = (todo) => {
+  return {
+    type: ADD_TO_DO,
+    todo // Attach the new todo item to the action object
+  }
+}
+
+// Create the Redux store with the reducer
+const store = Redux.createStore(immutableReducer);
+
+/*
+These final challenges describe several methods of enforcing the key principle of state immutability in Redux.
+ Immutable state means that you never modify state directly, instead, you return a new copy of state.
+
+If you took a snapshot of the state of a Redux app over time, you would see something like state 1, state 2, 
+state 3,state 4, ... and so on where each state may be similar to the last, but each is a distinct piece of 
+data. This immutability, in fact, is what provides such features as time-travel debugging that you may have 
+heard about.
+
+Redux does not actively enforce state immutability in its store or reducers, that responsibility falls on the
+ programmer. Fortunately, JavaScript (especially ES6) provides several useful tools you can use to enforce the
+  immutability of your state, whether it is a string, number, array, or object. Note that strings and numbers
+   are primitive values and are immutable by nature. In other words, 3 is always 3. You cannot change the value
+    of the number 3. An array or object, however, is mutable. In practice, your state will probably consist of
+     an array or object, as these are useful data structures for representing many types of information.
+*/
 
 /***************************************************************************************************************************/
 // USE SPREAD OPERATOR ON ARRAYS
