@@ -553,8 +553,39 @@ Redux does not actively enforce state immutability in its store or reducers, tha
 /***************************************************************************************************************************/
 // USE SPREAD OPERATOR ON ARRAYS
 
+const immutableReducer = (state = ['Do not mutate state!'], action) => {
+    // Reducer function with default state initialized to an array with one item
+    
+    switch(action.type) {
+      case 'ADD_TO_DO':
+        // Case for handling 'ADD_TO_DO' action type
+        
+        // Return a new array with the existing state items and the new to-do item appended
+        return [...state, action.todo]; // Using the spread operator to copy existing state and add the new to-do item
+        
+      default:
+        // Default case to return the current state if action type doesn't match
+        return state;
+    }
+  };
+  
+  const addToDo = (todo) => {
+    // Action creator for creating an 'ADD_TO_DO' action
+    
+    return {
+      type: 'ADD_TO_DO', // Specifies the action type
+      todo // Includes the new to-do item to be added to the state
+    }
+  }
+  
+  const store = Redux.createStore(immutableReducer); 
+  // Create the Redux store with the immutableReducer to manage the state
+  
+
 /***************************************************************************************************************************/
 // REMOVE AN ITEM FROM AN ARRAY
+
+
 
 /***************************************************************************************************************************/
 // COPY AN OBJECT WITH OBJECT.ASSIGN
