@@ -557,6 +557,50 @@ class MyComponent extends React.Component { // Define a class component called M
 
 
 /***************************************************************************************************************************/
+// CREATE A COUNTER WITH REACT
+
+class Counter extends React.Component { // Define a new React component class named Counter
+  constructor(props) { // Constructor method for initializing the component
+    super(props); // Call the parent class (React.Component) constructor with props
+    this.state = { // Initialize the component's state
+      count: 0 // Set the initial value of count to 0
+    };
+    // Change code below this line
+    this.increment = this.increment.bind(this); // Bind the increment method to the current instance
+    this.decrement = this.decrement.bind(this); // Bind the decrement method to the current instance
+    this.reset = this.reset.bind(this); // Bind the reset method to the current instance
+    // Change code above this line
+  }
+  // Change code below this line
+  increment() { // Method to increment the count
+    this.setState(prevState => ({ // Update the state using the previous state
+      count: prevState.count + 1 // Increase the count by 1
+    }));
+  }
+
+  decrement() { // Method to decrement the count
+    this.setState(prevState => ({ // Update the state using the previous state
+      count: prevState.count - 1 // Decrease the count by 1
+    }));
+  }
+
+  reset() { // Method to reset the count
+    this.setState({ // Update the state
+      count: 0 // Set the count to 0
+    });
+  }
+  // Change code above this line
+  render() { // Render method to define what the component should display
+    return ( // Return the JSX to render
+      <div> {/* Container for the buttons and display */}
+        <button className='inc' onClick={this.increment}>Increment!</button> {/* Button to increment the count */}
+        <button className='dec' onClick={this.decrement}>Decrement!</button> {/* Button to decrement the count */}
+        <button className='reset' onClick={this.reset}>Reset</button> {/* Button to reset the count */}
+        <h1>Current Count: {this.state.count}</h1> {/* Display the current count */}
+      </div>
+    );
+  }
+};
 
 
 /***************************************************************************************************************************/
