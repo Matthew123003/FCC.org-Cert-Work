@@ -602,7 +602,7 @@ class Counter extends React.Component { // Define a new React component class na
   }
 };
 
-
+// BUILT SIMPLE INCREMENT AND DECREMENT USING ON CLICK AND OTHER REACT PROPS
 /***************************************************************************************************************************/
 
 /***************************************************************************************************************************/
