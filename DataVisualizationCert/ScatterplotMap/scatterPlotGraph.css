@@ -1,0 +1,36 @@
+#chart {
+    position: relative;
+    width: 800px;
+    height: 600px;
+  }
+  
+  #title {
+    text-align: center;
+  }
+  
+  svg {
+    border: 1px solid #ccc;
+  }
+  
+  .axis path, .axis line {
+    fill: none;
+    shape-rendering: crispEdges;
+  }
+  
+  .dot {
+    fill: steelblue;
+    stroke: #fff;
+  }
+  
+  #tooltip {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    display: none;
+  }
+  
+  #legend {
+    margin-top: 10px;
+  }
+  
