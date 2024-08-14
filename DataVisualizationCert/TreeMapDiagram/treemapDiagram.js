@@ -16,3 +16,13 @@ tiles.attr("fill", d => colorScale(d.category)); // Use color scale for filling 
   
 const legend = svg.append("g")
   .attr("id", "legend");
+
+legend.selectAll(".legend-item")
+  .data(colorScale.domain()) // Use color scale domain for legend items
+  .enter().append("rect")
+  .attr("class", "legend-item")
+  .attr("x", (d, i) => 10) // Positioning of legend items
+  .attr("y", (d, i) => i * 20)
+  .attr("width", 20)
+  .attr("height", 20)
+  .attr("fill", d => colorScale(d)); // Use the same color scale for legend
