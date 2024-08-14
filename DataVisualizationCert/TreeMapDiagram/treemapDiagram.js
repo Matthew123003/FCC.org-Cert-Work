@@ -75,3 +75,15 @@ d3.json("https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/video-
     .attr("y", (d, i) => i * 20 + 15) // Set the y-position of each text label based on its index
     .text(d => d); // Set the text content of each label to the category name
 });
+
+/*
+Dimensions and Margins: Set up the size of the SVG canvas and margins for positioning the tree map layout within the SVG.
+Color Scale: Define a color scale to assign different colors to different categories in the data.
+SVG Canvas: Create an SVG element and set its width and height, which serves as the container for the tree map.
+Tree Map Layout: Define the layout generator for creating the hierarchical tree map, specifying the size and padding.
+Data Loading and Processing: Load the JSON data, create a hierarchical structure, compute the positions and sizes of tiles based on the tree map layout.
+Tiles: Add rectangles to the SVG for each data point, position and size them according to the tree map layout, and set attributes for interactive elements like tooltips.
+Tooltip: Show additional information about each tile when hovered over, including setting the data-value for tooltips.
+Legend: Create a legend to indicate which colors correspond to which categories, helping users understand the tree map visualization.
+Legend Items and Labels: Add rectangles and text labels to the legend for visual reference of categories and their associated colors.
+*/
