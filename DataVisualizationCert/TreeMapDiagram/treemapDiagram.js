@@ -26,3 +26,16 @@ legend.selectAll(".legend-item")
   .attr("width", 20)
   .attr("height", 20)
   .attr("fill", d => colorScale(d)); // Use the same color scale for legend
+
+tiles.on("mouseover", (event, d) => {
+    d3.select("#tooltip")
+      .style("left", `${event.pageX + 5}px`)
+      .style("top", `${event.pageY - 28}px`)
+      .style("display", "inline-block")
+      .attr("data-value", d.value) // Set data-value for tooltip
+      .html(`Name: ${d.name}<br>Category: ${d.category}<br>Value: ${d.value}`);
+  })
+  .on("mouseout", () => {
+    d3.select("#tooltip").style("display", "none");
+  });
+  
