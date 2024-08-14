@@ -10,7 +10,9 @@ const tiles = svg.selectAll(".tile")
   .attr("data-category", d => d.category)
   .attr("data-value", d => d.value);
 
-  const colorScale = d3.scaleOrdinal(d3.schemeCategory10); // Define color scale
+const colorScale = d3.scaleOrdinal(d3.schemeCategory10); // Define color scale
 
-  tiles.attr("fill", d => colorScale(d.category)); // Use color scale for filling tiles
+tiles.attr("fill", d => colorScale(d.category)); // Use color scale for filling tiles
   
+const legend = svg.append("g")
+  .attr("id", "legend");
