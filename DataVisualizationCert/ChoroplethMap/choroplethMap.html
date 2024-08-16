@@ -1,29 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Defines the document type as HTML5 -->
+<html lang="en"> <!-- Starts the HTML document and sets the language attribute to English -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Choropleth Map</title>
-  <link rel="stylesheet" href="/DataVisualizationCert/ChoroplethMap/choroplethMap.css">
+  <meta charset="UTF-8"> <!-- Specifies the character encoding for the document (UTF-8 is standard for most languages) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the webpage is responsive and scales properly on different devices by controlling the viewport settings -->
+  <title>Choropleth Map</title> <!-- Sets the title of the webpage that appears in the browser tab -->
+  <link rel="stylesheet" href="/DataVisualizationCert/ChoroplethMap/choroplethMap.css"> <!-- Links an external CSS stylesheet to style the page -->
 </head>
-<body>
-  <div class="container">
-    <h1 id="title">United States Educational Attainment</h1>
-    <p id="description">Percentage of adults age 25 and older with a bachelor's degree or higher (2010-2014)</p>
+<body> <!-- Begins the body of the HTML document where content is placed -->
+  <div class="container"> <!-- A container div to group the main content elements together -->
+    <h1 id="title">United States Educational Attainment</h1> <!-- Main title of the page with an ID for easy styling and selection via CSS/JS -->
+    <p id="description">Percentage of adults age 25 and older with a bachelor's degree or higher (2010-2014)</p> <!-- A paragraph that provides a description of the data being visualized, with an ID for styling -->
 
-    <svg id="choropleth-map"></svg>
+    <svg id="choropleth-map"></svg> <!-- An SVG element where the choropleth map will be drawn; the ID allows for targeting in D3.js for drawing the map -->
 
-    <div id="tooltip"></div>
+    <div id="tooltip"></div> <!-- A div to hold the tooltip that will display data when hovering over different parts of the map; its ID allows it to be targeted for interactivity with D3.js -->
 
-    <div id="legend">
-      <h2>Legend</h2>
-      <div class="legend-scale"></div>
+    <div id="legend"> <!-- A div to hold the legend for the map, explaining the color scales -->
+      <h2>Legend</h2> <!-- A subheading for the legend section -->
+      <div class="legend-scale"></div> <!-- A div inside the legend to hold the actual scale, likely to be styled and populated via CSS and D3.js -->
     </div>
-  </div>
+  </div> <!-- Closes the container div -->
 
-  <script src="https://d3js.org/d3.v6.min.js"></script>
-  <script src="https://d3js.org/topojson.v2.min.js"></script>
-  <script src="/DataVisualizationCert/ChoroplethMap/choroplethMap.js"></script>
-  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  <script src="https://d3js.org/d3.v6.min.js"></script> <!-- Links to the D3.js library (version 6) which is used for data-driven document manipulation and creating the choropleth map -->
+  <script src="https://d3js.org/topojson.v2.min.js"></script> <!-- Links to the TopoJSON library (version 2) for handling geographical data, often used with D3.js to create maps -->
+  <script src="/DataVisualizationCert/ChoroplethMap/choroplethMap.js"></script> <!-- Links to the external JavaScript file where the D3.js code for drawing the choropleth map is written -->
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> <!-- Links to FreeCodeCamp's testing suite to validate the project according to their specific user stories and requirements -->
 </body>
-</html>
+</html> <!-- Ends the HTML document -->
