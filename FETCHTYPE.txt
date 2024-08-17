@@ -1,0 +1,75 @@
+In a relational database, particularly when using an Object-Relational
+ Mapping (ORM) framework like Hibernate in Java, **fetch type** refers
+  to how related entities are loaded from the database when a particular
+   entity is queried. The two main fetch types are **lazy** and **eager**:
+
+### **Lazy Fetching (Lazy Loading)**
+- **Definition**: With lazy fetching, related entities are not loaded 
+from the database until they are accessed directly in the code. This
+ means that when you query for an entity, the associated entities are
+  not immediately retrieved. They are fetched only when you explicitly 
+  request them, typically by accessing their getter methods.
+- **Advantages**:
+  - **Performance Optimization**: Reduces the initial load time and 
+  memory consumption since only the primary entity is loaded, and 
+  associated entities are loaded on demand.
+  - **Efficient Use of Resources**: Ideal for situations where you 
+  may not need the associated entities immediately or at all, thereby
+   saving database resources.
+- **Disadvantages**:
+  - **LazyInitializationException**: If the session or transaction 
+  is closed and you try to access the lazily loaded entities, you 
+  can get a `LazyInitializationException`.
+  - **Multiple Queries**: May lead to additional queries being 
+  executed, which can be inefficient if many related entities are
+   eventually needed.
+
+### **Eager Fetching (Eager Loading)**
+- **Definition**: With eager fetching, all related entities are 
+loaded from the database immediately along with the primary entity.
+ This means that when you query for an entity, all associated entities
+  are retrieved in the same query or in additional queries that are 
+  executed immediately.
+- **Advantages**:
+  - **No Delayed Loads**: All necessary data is loaded upfront, 
+  so you won't face issues like `LazyInitializationException`.
+  - **Fewer Queries**: Depending on the situation, eager fetching 
+  can reduce the number of database queries, especially if you know
+   you will need the associated entities immediately.
+- **Disadvantages**:
+  - **Increased Initial Load Time**: Loading all related entities
+   immediately can slow down the initial query, especially if the 
+   related entities are large or complex.
+  - **Memory Usage**: Eager fetching can lead to higher memory usage
+   since all associated entities are loaded, even if some of them are
+    never used in the code.
+
+### **Example in Hibernate (Java)**
+```java
+@Entity
+public class Author {
+    @OneToMany(fetch = FetchType.LAZY) // Lazy fetch: Books are not
+                                          loaded until accessed
+    private List<Book> books;
+}
+
+@Entity
+public class Publisher {
+    @OneToMany(fetch = FetchType.EAGER) // Eager fetch: Books are 
+                                           loaded immediately with the
+                                            Publisher
+    private List<Book> books;
+}
+```
+
+In the example above, querying an `Author` entity will not immediately
+ load the associated `Book` entities (lazy loading), whereas querying a
+  `Publisher` entity will load all associated `Book` entities right away
+   (eager loading).
+
+### **When to Use Which?**
+- **Lazy Loading** is generally preferred for large collections or when
+ associated entities are not always needed.
+- **Eager Loading** is suitable when related entities are always needed
+ along with the main entity and can help avoid the overhead of multiple
+  queries.
