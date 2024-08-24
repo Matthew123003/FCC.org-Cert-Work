@@ -806,6 +806,30 @@ class MyComponent extends React.Component {
 
 /***************************************************************************************************************************/
 // USE LIFECYCLE METHOD COMPENENTDIDMOUNT
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeUsers: null
+    };
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        activeUsers: 1273
+      });
+    }, 2500);
+  }
+  render() {
+    return (
+      <div>
+        {/* Change code below this line */}
+        <h1>Active Users: {this.state.activeUsers !== null ? this.state.activeUsers : 'Loading...'} </h1>
+        {/* Change code above this line */}
+      </div>
+    );
+  }
+}
 
 /***************************************************************************************************************************/
 // ADD EVENT LISTENERS
