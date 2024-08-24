@@ -192,7 +192,14 @@ class AppWrapper extends React.Component {
 /***************************************************************************************************************************/
 // MAP STATE TO PROPS
 
+const state = [];
 
+// Change code below this line
+const mapStateToProps = (state) => {
+  return {
+    messages: state
+  };
+};
 /***************************************************************************************************************************/
 // MAP DISPATCH TO PROPS
 
