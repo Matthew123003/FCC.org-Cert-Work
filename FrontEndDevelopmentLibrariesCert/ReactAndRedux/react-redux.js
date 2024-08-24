@@ -203,6 +203,21 @@ const mapStateToProps = (state) => {
 /***************************************************************************************************************************/
 // MAP DISPATCH TO PROPS
 
+const addMessage = (message) => {
+  return {
+    type: 'ADD',
+    message: message
+  }
+};
+
+// Change code below this line
+const mapDispatchToProps = (dispatch) => {
+  return {
+    submitNewMessage: (message) => {
+      dispatch(addMessage(message));
+    }
+  }
+};
 
 /***************************************************************************************************************************/
 // CONNECT REDUX TO REACT
