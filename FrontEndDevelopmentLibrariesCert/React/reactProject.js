@@ -641,11 +641,91 @@ class ControlledInput extends React.Component {
   }
 };
 /***************************************************************************************************************************/
+// CREATE A CONTROLLED FORM
 
+class MyForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: '',
+      submit: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange(event) {
+    this.setState({
+      input: event.target.value
+    });
+  }
+  handleSubmit(event) {
+    // Change code below this line
+      event.preventDefault();
+    
+    // Set the submit state to the current input value
+    this.setState({
+      submit: this.state.input
+    });
+    // Change code above this line
+  }
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          {/* Change code below this line */}
+            {/* Input element with value and onChange attributes */}
+          <input 
+            type='text' 
+            value={this.state.input} 
+            onChange={this.handleChange} 
+          />
+          {/* Change code above this line */}
+          <button type='submit'>Submit!</button>
+        </form>
+        {/* Change code below this line */}
+        <h1>{this.state.submit}</h1>
+        {/* Change code above this line */}
+      </div>
+    );
+  }
+}
 /***************************************************************************************************************************/
+// PASS STATE AS PROPS TO CHILD COMPONENT
 
+class MyApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'CamperBot'
+    }
+  }
+  render() {
+    return (
+       <div>
+         {/* Change code below this line */}
+         <Navbar name={this.state.name} />
+         {/* Change code above this line */}
+       </div>
+    );
+  }
+};
+
+class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+    <div>
+      {/* Change code below this line */}
+      <h1>Hello, my name is: {this.props.name} </h1>
+      {/* Change code above this line */}
+    </div>
+    );
+  }
+};
 /***************************************************************************************************************************/
-
+//
 /***************************************************************************************************************************/
 
 /***************************************************************************************************************************/
