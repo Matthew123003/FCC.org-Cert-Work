@@ -1341,6 +1341,19 @@ class MyComponent extends React.Component {
 
 /***************************************************************************************************************************/
 // RENDER REACT ON THE SERVER WITH RENDERTOSTRING()
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <div/>
+  }
+};
+
+// Change code below this line
+const appString = ReactDOMServer.renderToString(<App />);
+
+console.log(appString);
 
 /***************************************************************************************************************************/
 
