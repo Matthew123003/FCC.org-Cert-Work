@@ -1,0 +1,107 @@
+OAuth2 (Open Authorization 2) is a protocol for authorization that
+ allows applications to obtain limited access to user accounts on an
+  HTTP service, such as a web application or a mobile app. It is 
+  commonly used for securing APIs and enabling third-party applications
+   to access user data without exposing user credentials.
+
+### Key Concepts of OAuth2:
+
+1. **Authorization**: OAuth2 focuses on authorization, not 
+authentication. It allows third-party applications to access 
+resources on behalf of a user without needing to handle or store
+user credentials directly.
+
+2. **Roles**:
+   - **Resource Owner**: The user who owns the data or resource 
+   that is being accessed.
+   - **Client**: The application requesting access to the resource 
+   (e.g., a web app, mobile app).
+   - **Authorization Server**: The server responsible for authenticating
+    the user and issuing access tokens.
+   - **Resource Server**: The server hosting the resource that the 
+   client wants to access, and which validates the access token.
+
+3. **Tokens**:
+   - **Access Token**: A token issued by the authorization server 
+   that the client uses to access the resource server. It represents
+    the authorization granted to the client.
+   - **Refresh Token**: A token used to obtain a new access token 
+   without requiring the user to re-authenticate.
+
+4. **Authorization Grant Types**:
+   - **Authorization Code**: Used in web applications where the 
+   client receives an authorization code, which it then exchanges 
+   for an access token.
+   - **Implicit**: Used in browser-based applications where the access 
+   token is returned directly in the URL fragment.
+   - **Resource Owner Password Credentials**: The user provides their 
+   sername and password directly to the client, which then uses them to
+    obtain an access token.
+   - **Client Credentials**: Used when the client itself needs to access
+    its own resources or perform operations on behalf of itself.
+
+5. **Flows**:
+   - **Authorization Code Flow**: Commonly used for web applications,
+    involves redirecting the user to an authorization server, which 
+    issues an authorization code. The client then exchanges this code 
+    for an access token.
+   - **Implicit Flow**: Used for single-page applications, where the 
+   access token is returned directly to the client.
+   - **Password Flow**: Used for trusted clients where the user provides
+    their credentials directly to the client.
+   - **Client Credentials Flow**: Used for machine-to-machine 
+   communication where the client itself needs access.
+
+### Benefits of OAuth2:
+
+- **Security**: Users don’t need to share their credentials with 
+third-party applications.
+- **Granularity**: Allows fine-grained access control with scopes 
+and permissions.
+- **Token Management**: Supports token expiration and revocation, 
+improving security.
+
+### Example Scenario:
+
+Imagine a user wants to allow a new app to access their Google Calendar.
+ Instead of giving the app their Google password, OAuth2 allows the user
+  to grant access through Google's authorization server. The app receives
+   an access token from Google, which it uses to access the user's
+    calendar data on their behalf.
+
+OAuth2 is widely used in modern web applications and APIs to provide 
+secure and user-friendly access to protected resources.
+
+
+**Authentication** and **authorization** are two distinct but related concepts in the realm of security. Here’s a breakdown of each:
+
+### Authentication
+
+**Authentication** is the process of verifying the identity of a user or system. It answers the question: "Who are you?" Authentication ensures that the person or system trying to access a resource is who they claim to be. 
+
+#### Common Authentication Methods:
+- **Username and Password**: The most common method, where a user provides a username and a corresponding password.
+- **Multi-Factor Authentication (MFA)**: Adds additional layers of security, such as a text message code, email confirmation, or biometric data.
+- **Single Sign-On (SSO)**: Allows users to authenticate once and gain access to multiple systems or applications without needing to log in separately.
+
+### Authorization
+
+**Authorization** is the process of determining whether an authenticated user or system has permission to access a particular resource or perform a specific action. It answers the question: "What are you allowed to do?" Authorization decides whether the user has the right to access resources or perform actions based on their identity and roles.
+
+#### Common Authorization Methods:
+- **Role-Based Access Control (RBAC)**: Grants access based on the roles assigned to a user. For example, an admin might have more access than a regular user.
+- **Attribute-Based Access Control (ABAC)**: Grants access based on attributes of the user, resource, and environment. For example, a user might have access to a document only if they are in a specific department.
+- **Access Control Lists (ACLs)**: Lists permissions associated with resources. For example, a file might have a list of users who have read or write access.
+
+### Summary of Differences
+
+- **Authentication**: Confirms the identity of a user or system. It is about proving "who you are."
+- **Authorization**: Determines what an authenticated user or system is allowed to do. It is about granting "what you can do."
+
+### Example Scenario:
+
+1. **Authentication**: When you log into your email account, you enter your username and password. The system verifies that these credentials match what it has on record, thus confirming your identity.
+
+2. **Authorization**: Once logged in, if you try to access certain features or folders in your email account, the system checks your permissions to see if you have the right to access those features or folders. For instance, you might have access to read emails but not to delete them, based on your user role or permissions.
+
+Both authentication and authorization are crucial for securing systems and ensuring that users and systems can only perform actions they are permitted to.
