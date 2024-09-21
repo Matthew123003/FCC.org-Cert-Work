@@ -1,0 +1,65 @@
+### 1. **Use of Servlets and JSPs:**
+   - **Servlets:** If you've written code for handling HTTP requests 
+   and responses using Java, you've likely used **Servlets** (which are
+    part of Java EE). These are used to build dynamic web applications.
+
+   - **JSP (JavaServer Pages):** If you've used **JSP** files to create
+    dynamic web content by embedding Java code into HTML, that's also a
+     sign you're using Java EE.
+
+### 2. **Enterprise JavaBeans (EJB):**
+   - If you've worked with **Enterprise JavaBeans (EJB)**, which is a 
+   server-side component architecture for building scalable, 
+   transactional, and secure enterprise applications, then you're using
+    Java EE. EJBs are used for handling business logic in large 
+    enterprise applications.
+
+### 3. **JPA (Java Persistence API):**
+   - **JPA** is part of Java EE and is used for database interaction 
+   and object-relational mapping (ORM). If you've worked with JPA 
+   (e.g., using annotations like `@Entity`, `@Table`, `@Id`, etc.), 
+   that's another indication of using Java EE. Although JPA can be 
+   used outside of Java EE, it was originally a part of the EE spec.
+
+### 4. **Working with JMS (Java Message Service):**
+   - If you've dealt with messaging systems, queues, or topics in a 
+   Java application using **JMS**, then you're using Java EE. JMS is 
+   used for asynchronous communication between different components 
+   of an enterprise application.
+
+### 5. **Dependency Injection (CDI):**
+   - **Context and Dependency Injection (CDI)** is a key feature in 
+   Java EE. If you've used annotations like `@Inject` to manage 
+   dependencies between classes, that's another Java EE feature.
+
+### 6. **Working with Application Servers (like Tomcat, JBoss,
+ WebSphere, GlassFish, etc.):**
+   - If you've deployed your applications on enterprise-level 
+   application servers (e.g., **JBoss**, **GlassFish**, **WildFly**, 
+   **WebLogic**, or **WebSphere**) that support Java EE standards, 
+   then you're working with Java EE.
+   - These servers provide support for Java EE components like Servlets,
+    JSPs, EJBs, and more.
+
+### 7. **Use of JAX-RS (Java API for RESTful Web Services) or JAX-WS 
+(Java API for XML Web Services):**
+   - If you've built **RESTful** or **SOAP** web services using 
+   **JAX-RS** or **JAX-WS**, these APIs are part of Java EE. Creating 
+   APIs or web services in Java with these technologies is another sign.
+
+### 8. **Transaction Management and Security:**
+   - Java EE applications often require managing transactions and 
+   ensuring security at the enterprise level (such as role-based 
+   access control). If you’ve worked on applications with declarative 
+   transactions (like `@Transaction`) or Java EE's built-in security 
+   framework, you’ve likely used Java EE.
+
+### Key Examples of Java EE Technologies:
+- **Servlets and JSP**
+- **EJB (Enterprise JavaBeans)**
+- **JMS (Java Message Service)**
+- **JPA (Java Persistence API)**
+- **CDI (Context and Dependency Injection)**
+- **JAX-RS (for RESTful services) and JAX-WS (for SOAP services)**
+
+If your projects involve any of the above technologies, you’ve been working with Java EE. It's often used in enterprise-grade applications that require scalability, security, and distributed systems architecture.
