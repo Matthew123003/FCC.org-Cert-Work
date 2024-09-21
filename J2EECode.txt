@@ -1,0 +1,235 @@
+Certainly! Java EE (now known as **Jakarta EE**) builds on top of Java SE (formerly J2SE) by adding several enterprise-level features. These features include web services, Servlets, JSP (JavaServer Pages), EJB (Enterprise JavaBeans), CDI (Contexts and Dependency Injection), and others. I'll provide brief examples of how you might use Java EE features based on what I explained earlier about J2SE.
+
+### **Java EE Key Features with Code Examples:**
+
+---
+
+### 1. **Servlets (Web Applications)**
+
+A **Servlet** is a Java class used to handle requests and responses in a web application. Servlets can interact with HTTP requests and send dynamic responses.
+
+```java
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+// Define a Servlet to handle HTTP requests
+@WebServlet("/hello")
+public class HelloServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Set the response content type
+        resp.setContentType("text/html");
+
+        // Send response back to the client
+        PrintWriter out = resp.getWriter();
+        out.println("<h1>Hello, World!</h1>");
+    }
+}
+```
+
+- **Explanation:** The `HelloServlet` class extends `HttpServlet` and handles HTTP GET requests by returning a simple HTML response (`Hello, World!`).
+
+---
+
+### 2. **JSP (JavaServer Pages)**
+
+A **JSP** is used to create dynamic web content. It embeds Java code directly into an HTML page.
+
+```jsp
+<!-- index.jsp -->
+<%@ page contentType="text/html" %>
+<html>
+<head>
+    <title>JSP Example</title>
+</head>
+<body>
+    <h1>Welcome to JSP</h1>
+    <p>Current Date and Time: <%= new java.util.Date() %></p>
+</body>
+</html>
+```
+
+- **Explanation:** In this JSP file, the Java expression `<%= new java.util.Date() %>` will be evaluated and output on the page, displaying the current date and time.
+
+---
+
+### 3. **Enterprise JavaBeans (EJB)**
+
+EJBs are used for building scalable, transactional, and secure enterprise applications. Here's an example of a simple stateless session bean:
+
+```java
+import javax.ejb.Stateless;
+
+@Stateless
+public class CalculatorBean {
+
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+}
+```
+
+- **Explanation:** This is a stateless session bean called `CalculatorBean`. It has methods to perform addition and subtraction operations. Stateless means it doesn't maintain any state between client requests.
+
+You can call this EJB from another part of your application like this:
+
+```java
+@EJB
+private CalculatorBean calculatorBean;
+
+public void performCalculations() {
+    int sum = calculatorBean.add(5, 10);
+    System.out.println("Sum: " + sum);
+}
+```
+
+---
+
+### 4. **JPA (Java Persistence API)**
+
+**JPA** is used for ORM (Object-Relational Mapping), which maps Java objects to database tables.
+
+```java
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private String position;
+
+    // Getters and Setters
+}
+```
+
+- **Explanation:** This is a JPA `@Entity` class representing an `Employee` table in a relational database. The `@Id` annotation marks the `id` field as the primary key, and `@GeneratedValue` specifies that the ID is auto-generated.
+
+In a service layer, you can use the `EntityManager` to persist objects:
+
+```java
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+public class EmployeeService {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Transactional
+    public void createEmployee(String name, String position) {
+        Employee employee = new Employee();
+        employee.setName(name);
+        employee.setPosition(position);
+        entityManager.persist(employee); // Saves the employee to the database
+    }
+}
+```
+
+---
+
+### 5. **CDI (Contexts and Dependency Injection)**
+
+**CDI** allows you to inject dependencies directly into classes without needing to manually manage object creation.
+
+```java
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+@Named
+@RequestScoped
+public class MyBean {
+
+    @Inject
+    private MyService service;
+
+    public String execute() {
+        return service.doSomething();
+    }
+}
+```
+
+- **Explanation:** The `@Inject` annotation allows CDI to inject an instance of `MyService` into `MyBean`. The `@Named` and `@RequestScoped` annotations indicate that this is a CDI managed bean available in a web request context.
+
+---
+
+### 6. **Web Services (JAX-RS)**
+
+Java EE provides support for building RESTful web services using **JAX-RS**.
+
+```java
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("/hello")
+public class HelloResource {
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String sayHello() {
+        return "Hello, REST!";
+    }
+}
+```
+
+- **Explanation:** This is a simple RESTful web service resource class. When you make an HTTP GET request to `/hello`, it returns the string `"Hello, REST!"`.
+
+To consume this service, you can make a request using tools like `curl`:
+
+```bash
+curl http://localhost:8080/myapp/hello
+```
+
+---
+
+### 7. **Transactions**
+
+Java EE provides transaction management support via JTA (Java Transaction API). You can manage transactions declaratively using the `@Transactional` annotation.
+
+```java
+import javax.transaction.Transactional;
+
+public class PaymentService {
+
+    @Transactional
+    public void processPayment(Payment payment) {
+        // Process payment and persist transaction
+    }
+}
+```
+
+- **Explanation:** The `@Transactional` annotation ensures that the entire `processPayment` method is executed within a database transaction, and if an exception occurs, the transaction is rolled back.
+
+---
+
+### **Summary of Java EE Usage**
+
+- **Servlets** are used to handle HTTP requests and generate dynamic content.
+- **JSP** is a template-based view technology for displaying dynamic content in web pages.
+- **EJBs** are used for scalable, secure, and transactional business logic.
+- **JPA** manages persistent data and integrates with relational databases.
+- **CDI** helps inject dependencies and manage the lifecycle of beans.
+- **JAX-RS** is used to create RESTful web services.
+- **Transaction Management** is handled with JTA for managing database transactions seamlessly.
+
+These examples showcase how you might use various Java EE features in real-world applications. Java EE is particularly suited for large-scale, distributed, and transactional systems that require robustness, scalability, and security.
