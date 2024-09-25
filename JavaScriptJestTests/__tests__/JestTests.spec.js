@@ -7,3 +7,6 @@ describe('Sample Tests', () => {
       expect(2 * 3).toBe(6);
     });
   });
+
+  // TEST FILES NEED TO BE <filename>.spec.js
+  // OR <filename>.test.js
