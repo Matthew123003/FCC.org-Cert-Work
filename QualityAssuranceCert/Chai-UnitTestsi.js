@@ -172,3 +172,6 @@ suite('Unit Tests', function () {
 // mocha --version
 // COMMAND TO INSTALL ALL DEPENDENCIES
 // npm install --save-dev mocha chai chai-http body-parser cors express zombie
+// COMMAND TO INSTALL MACHA AND CHAI DEPENDENCIES ONLY
+// npm install --save-dev mocha chai
+
