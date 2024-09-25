@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-const assert = chai.assert;
 
 suite('Unit Tests', function () {
   suite('Basic Assertions', function () {

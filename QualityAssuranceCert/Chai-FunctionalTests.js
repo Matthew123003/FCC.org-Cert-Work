@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-const assert = chai.assert;
 
 const server = require('../server');
 
