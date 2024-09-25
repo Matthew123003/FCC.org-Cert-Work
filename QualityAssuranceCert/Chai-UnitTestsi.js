@@ -1,4 +1,5 @@
-const chai = require('chai');
+// const chai = require('chai');
+import chai from 'chai';
 const assert = chai.assert;
 
 suite('Unit Tests', function () {
