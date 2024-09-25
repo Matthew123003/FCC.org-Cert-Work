@@ -171,3 +171,5 @@ suite('Unit Tests', function () {
 // COMMAND TO RUN TESTS
 // sudo npm install -g mocha
 // mocha --version
+// COMMAND TO INSTALL ALL DEPENDENCIES
+// npm install --save-dev mocha chai chai-http body-parser cors express zombie
