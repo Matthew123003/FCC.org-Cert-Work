@@ -1,3 +1,6 @@
+import { getData, postData, updateData, deleteData, patchData, headData, optionsData } from './httpRequestsJasmine';
+
+
 // Define a test suite called "HTTP Request Testing".
 describe("HTTP Request Testing", function () {
 
