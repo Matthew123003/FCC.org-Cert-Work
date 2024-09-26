@@ -1,5 +1,3 @@
-// mathOperations.spec.js
-
 import { add, concatenate } from './mathOperations'; // Import the functions to test
 
 describe("Math Operations Tests", function() {
