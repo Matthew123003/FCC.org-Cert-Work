@@ -19,3 +19,25 @@ Both **Jasmine** and **Jest** are popular testing frameworks in the JavaScript e
 - **Jasmine** is still relevant, especially in legacy projects or specific frameworks (like Angular), but it may require more manual setup and additional dependencies.
 
 In modern JavaScript development, especially with the rise of frameworks like React and Vue, Jest tends to be the more common choice for new projects. However, if you have a specific project context or requirements, both frameworks can be suitable.
+
+
+TO SET UP Jasmine
+
+npm install --save-dev jasmine
+npx jasmine init
+This will create a spec folder where you can write your test cases and a jasmine.json configuration file.
+Create a test file in the spec folder, for example, spec/exampleSpec.js. Here’s a simple test example:
+You can set up a test script in your package.json to run Jasmine easily:
+
+json
+
+"scripts": {
+  "test": "jasmine"
+}
+
+Now you can run your tests using:
+
+bash
+
+npm test
+
