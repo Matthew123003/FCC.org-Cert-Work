@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "jsx": "react-jsx",   // Ensure JSX is enabled for TypeScript
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "moduleResolution": "node"
+    }
+  }
+  
