@@ -85,3 +85,11 @@ describe('Dashboard Component', () => {
         expect(getByText('Go to Settings')).toBeInTheDocument();
     });
 });
+
+/*
+Prop Rendering: Validates how props are passed and rendered (like greeting with name).
+API Mocking: Tests asynchronous behavior and verifies how fetched data is displayed.
+Event Handling: Simulates user actions (button click) and checks state updates.
+Snapshot Testing: Ensures the UI remains consistent over time.
+External Libraries: Tests integrations with third-party libraries (like React Router).
+*/
