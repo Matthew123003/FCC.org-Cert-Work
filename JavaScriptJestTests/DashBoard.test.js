@@ -93,3 +93,8 @@ Event Handling: Simulates user actions (button click) and checks state updates.
 Snapshot Testing: Ensures the UI remains consistent over time.
 External Libraries: Tests integrations with third-party libraries (like React Router).
 */
+
+// TO JUST RUN DASHBOARD TESTS
+// npx jest Dashboard
+// TO JUST RUN JAVASCRIPT TESTS
+// npx jest __tests__
