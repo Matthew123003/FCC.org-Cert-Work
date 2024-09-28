@@ -1,16 +1,19 @@
-To use Bootstrap in your HTML project, you can include it via a CDN (Content Delivery Network) 
+To use Bootstrap in your HTML project, you can include it via a CDN 
+(Content Delivery Network) 
 or install it locally. Here are the steps for both methods:
 Using a CDN
 
     Add Bootstrap CSS:
-    Add the following <link> element to the <head> section of your HTML file:
+    Add the following <link> element to the <head> section of your HTML
+     file:
 
     html
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 Add Bootstrap JavaScript:
-Add the following <script> elements just before the closing </body> tag:
+Add the following <script> elements just before the closing </body> 
+tag:
 
 html
 
@@ -28,8 +31,10 @@ Installing Locally
 npm install bootstrap
 
 Include Bootstrap in Your Project:
-In your HTML file, link to the local Bootstrap CSS and JS files. If you're using a build tool like Webpack 
-or a framework like React, you might need to adjust the paths accordingly.
+In your HTML file, link to the local Bootstrap CSS and JS files. If 
+you're using a build tool like Webpack 
+or a framework like React, you might need to adjust the paths 
+accordingly.
 
 html
 
@@ -99,7 +104,8 @@ html
 </body>
 </html>
 
-This example includes a Bootstrap navbar and a jumbotron. You can start using Bootstrap classes in your HTML to 
+This example includes a Bootstrap navbar and a jumbotron. You can 
+start using Bootstrap classes in your HTML to 
 style your elements as per Bootstrap's documentation.
 
 Feel free to ask if you have any other questions!
