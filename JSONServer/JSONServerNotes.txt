@@ -91,3 +91,59 @@ You can also add custom directories using -s/--static option.
 
 json-server -s ./static
 json-server -s ./static -s ./node_modules
+
+
+JSON Server is a simple and lightweight tool that allows you to set up a RESTful API using a JSON file as your database. It is especially useful for prototyping and testing front-end applications without needing a full-fledged backend. Here’s how it works and its main operations:
+
+### How JSON Server Works
+
+1. **Setup**:
+   - To use JSON Server, you first create a `db.json` file that acts as your database. This file contains your data structured in JSON format, such as arrays and objects.
+   - You can install JSON Server globally using npm:
+     ```bash
+     npm install -g json-server
+     ```
+   - You can also run it using `npx`, which allows you to use the package without installing it globally:
+     ```bash
+     npx json-server --watch db.json
+     ```
+
+2. **Starting the Server**:
+   - When you run `json-server --watch db.json`, it starts a server on `http://localhost:3000` by default.
+   - The `--watch` flag tells JSON Server to watch for changes in the `db.json` file. Any changes you make to the JSON file (like adding, updating, or deleting entries) will automatically be reflected in the server without needing to restart it.
+
+3. **Creating Endpoints**:
+   - JSON Server automatically creates RESTful API endpoints based on the data structure in your `db.json` file.
+   - For example, if your `db.json` contains:
+     ```json
+     {
+       "posts": [
+         { "id": 1, "title": "Post 1" },
+         { "id": 2, "title": "Post 2" }
+       ]
+     }
+     ```
+     You will have the following endpoints:
+     - **GET** `http://localhost:3000/posts` - to retrieve all posts.
+     - **GET** `http://localhost:3000/posts/1` - to retrieve the post with ID 1.
+     - **POST** `http://localhost:3000/posts` - to create a new post.
+     - **PUT** `http://localhost:3000/posts/1` - to update the post with ID 1.
+     - **DELETE** `http://localhost:3000/posts/1` - to delete the post with ID 1.
+
+4. **CRUD Operations**:
+   - **Create (POST)**: You can send a POST request to create a new resource (like a new post or poll) by sending a JSON object in the request body.
+   - **Read (GET)**: You can retrieve resources using GET requests. You can get all resources or specific ones using their IDs.
+   - **Update (PUT/PATCH)**: You can update existing resources by sending a PUT (to replace the resource entirely) or PATCH (to update partial fields) request to the respective endpoint.
+   - **Delete (DELETE)**: You can delete a resource by sending a DELETE request to the appropriate endpoint.
+
+5. **Data Manipulation**:
+   - Any modifications you make to the data in `db.json` (like adding, updating, or deleting objects) are instantly available through the API.
+   - JSON Server supports a variety of query parameters for filtering, pagination, and sorting, allowing you to retrieve only the data you need. For example:
+     - `http://localhost:3000/posts?_limit=5` to limit the number of posts returned to 5.
+     - `http://localhost:3000/posts?_sort=likes&_order=desc` to sort posts by likes in descending order.
+
+6. **Extensibility**:
+   - You can extend JSON Server’s functionality using custom routes and middleware if needed, allowing for more complex behaviors and additional features.
+
+### Summary
+JSON Server is an excellent tool for rapid development and testing of applications that require a simple API. It provides an easy way to set up a backend using a static JSON file, making it perfect for front-end developers who want to focus on building interfaces without the overhead of creating a full API.
