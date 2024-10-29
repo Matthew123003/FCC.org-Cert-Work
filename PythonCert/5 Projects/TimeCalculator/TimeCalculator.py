@@ -52,3 +52,9 @@ def add_time(start, duration, day_of_week=None):
     # Compile the final time string
     result = f"{end_hour}:{end_minute} {end_period}{day_string}{day_count_string}"
     return result
+
+
+print(add_time('3:30 PM', '2:12'))            # Returns: '5:42 PM'
+print(add_time('11:55 AM', '3:12'))           # Returns: '3:07 PM'
+print(add_time('8:16 PM', '466:02', 'Tuesday')) # Returns: '6:18 AM, Monday (20 days later)'
+print(add_time('2:59 AM', '24:00', 'Saturday')) # Returns: '2:59 AM, Sunday (next day)'
