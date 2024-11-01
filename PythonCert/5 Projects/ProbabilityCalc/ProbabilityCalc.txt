@@ -42,3 +42,10 @@ Since this is based on random draws, the probability will be slightly different 
 Hint: Consider using the modules that are already imported at the top. Do not initialize random seed within the file.
 
 Note: open the browser console with F12 to see a more verbose output of the tests.
+
+Tests
+
+Waiting: 1. Creation of hat object should add correct contents.
+Waiting: 2. The draw method in hat class should reduce number of items in contents.
+Waiting: 3. The draw method should behave correctly when the number of balls to extract is bigger than the number of balls in the hat.
+Waiting: 4. The experiment method should return a different probability.
